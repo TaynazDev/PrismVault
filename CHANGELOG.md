@@ -2,6 +2,75 @@
 
 All notable changes to Prism Vault will be documented in this file.
 
+## [1.7.0] - 2026-03-02
+
+### 👑 Biggest Splurge Stat Card
+
+#### Added
+- "Biggest Splurge" glassmorphism stat card on dashboard (4th card in grid)
+- Automatically finds the most expensive transaction of the current month
+- Shows amount, category, and date — updates in real-time on every transaction change
+- Crown emoji icon with amber/orange gradient accent
+- Stats grid expanded from 3 to 4 columns (2 columns on mobile)
+
+---
+
+## [1.6.0] - 2026-03-02
+
+### 📊 Weekly Spending Report
+
+#### Added
+- Dismissable weekly report banner shown every Monday at the top of the dashboard
+- Summarises last week: total spending, top category, biggest transaction, budget comparison
+- Blue-to-purple-to-pink gradient accent bar
+- Slide-in/slide-out animations
+- Dismiss state saved to localStorage — won't reappear until next Monday
+- Responsive 4-column → 2-column grid on mobile
+
+---
+
+## [1.5.0] - 2026-03-02
+
+### 🎀 Treat Yourself Pot
+
+#### Added
+- "Treat Yourself" guilt-free spending pot card on the dashboard
+- Set a monthly treat budget with its own pink gradient mini progress bar
+- New "Treat Yourself" category in Quick Add — draws from treat pot, not main budget
+- Treat transactions excluded from main budget and streak calculations
+- Gentle over-budget message ("but you deserve it 💖")
+- Save/reset treat pot to localStorage
+
+---
+
+## [1.4.0] - 2026-03-02
+
+### 🔥 Spending Streak
+
+#### Added
+- Spending streak card on dashboard tracking consecutive days under daily budget average
+- Flame emoji with orange gradient accent
+- Dynamic messages based on streak length (0, 1-6, 7-29, 30+ days)
+- Streak resets to 0 with gentle message when broken
+- Trophy emoji at 30+ days
+- Streak data (count, lastCheckedDate, broken) saved to localStorage
+- Streak recalculates on add/delete transaction and budget changes
+
+---
+
+## [1.3.0] - 2026-03-02
+
+### 🔁 Recurring Transactions
+
+#### Added
+- Recurring toggle in Quick Add modal with custom toggle switch
+- Purple "Recurring" badge with repeat icon on recurring transactions in history
+- Recurring rules saved to localStorage and auto-checked on page load
+- If a recurring transaction is due today, it auto-logs itself
+- Deleting a recurring transaction also removes the rule
+
+---
+
 ## [1.2.0] - 2026-03-02
 
 ### 🎯 Firestore Group Pots & Invite Friends

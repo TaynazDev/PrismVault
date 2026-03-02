@@ -8,12 +8,16 @@ A beautiful, modern budget tracker with a dark glassmorphism aesthetic. Track tr
 
 ✨ **Dashboard Overview**
 - Real-time balance, income, and expense tracking with smooth count-up animations
+- Four glassmorphic stat cards: Balance, Income, Expenses, and Biggest Splurge
 - Spending breakdown donut chart with gradient color scheme
-- Three glassmorphic stat cards showing financial snapshot
+- Spending streak tracker — consecutive days under daily budget average
+- Weekly spending report banner (shown on Mondays) with top category and biggest transaction
 
 💰 **Transaction Management**
 - Add income and expense transactions with categories
 - Quick-add modal for rapid logging (bottom-right FAB)
+- Recurring transaction toggle — auto-logs on the same day each month
+- Purple "Recurring" badge on auto-logged transactions
 - Filter transactions by type (All, Income, Expenses)
 - Delete individual transactions
 - Sorted by most recent first
@@ -22,7 +26,32 @@ A beautiful, modern budget tracker with a dark glassmorphism aesthetic. Track tr
 - Set weekly or monthly spending limits
 - Progress bar that fills with gradient color (pink → blue)
 - Automatic warnings at 80% capacity (orange) and when exceeded (red)
+- Spending streak rewards consecutive days of staying under budget
 - Real-time budget status updates
+
+🔥 **Spending Streak**
+- Tracks consecutive days you stay under your daily budget average
+- Flame emoji with dynamic contextual messages
+- Glassmorphism card with orange gradient accent
+- Persists across sessions via localStorage
+
+🎁 **Treat Yourself Pot**
+- Guilt-free spending pot with separate mini progress bar
+- "Treat Yourself" category in quick-add modal
+- Treat transactions excluded from main budget and streak calculations
+- Pink gradient accent glassmorphism card
+
+👑 **Biggest Splurge**
+- Stat card highlighting your most expensive transaction this month
+- Shows amount, category, and date at a glance
+- Amber/orange gradient accent with crown emoji
+- Updates dynamically whenever transactions change
+
+📅 **Weekly Spending Report**
+- Dismissable banner shown every Monday
+- Summarizes last week's total spend, top category, biggest transaction
+- Budget comparison with over/under indicator
+- Slide-in/out animations
 
 🎯 **Group Pots / Bill Splitting**
 - Create named shared pots for group expenses
@@ -41,14 +70,20 @@ A beautiful, modern budget tracker with a dark glassmorphism aesthetic. Track tr
 - Fully responsive mobile design
 - Smooth count-up animations for balance numbers
 
-� **Authentication**
+🔐 **Authentication**
 - Firebase Authentication (email & password)
 - Sign up / sign in with user profile
+- Optional — the app is fully usable without signing in
+- Sign-in required only for shared Group Pots
 - User name displayed in header with sign-out button
-- All app content gated behind auth screen
 
 💾 **Data Persistence**
-- Transactions and budgets saved to scoped localStorage per user
+- Transactions saved to localStorage (`prismPayTransactions`)
+- Budget settings saved to localStorage (`prismPayBudget`)
+- Recurring rules saved to localStorage (`prismPayRecurring`)
+- Spending streak saved to localStorage (`prismPayStreak`)
+- Treat Yourself pot saved to localStorage (`prismPayTreat`)
+- Weekly report dismiss state saved to localStorage (`prismPayWeeklyDismissed`)
 - Group Pots stored in Firebase Firestore with real-time sync
 - Data persists across sessions and devices (pots)
 
@@ -61,16 +96,15 @@ A beautiful, modern budget tracker with a dark glassmorphism aesthetic. Track tr
 - **Firebase Firestore** — Real-time shared Group Pots
 - **Chart.js** — Interactive donut chart
 - **Inter Font** — Clean sans-serif typography
-- **localStorage API** — User-scoped client-side persistence
+- **localStorage API** — Client-side persistence
 
 ## Getting Started
 
 1. Visit [taynazdev.github.io/PrismVault](https://taynazdev.github.io/PrismVault)
-2. Sign up with your email and password
-3. Start adding transactions
-4. Set a budget to track spending
-5. Create group pots and invite friends by email
-6. All data is automatically saved
+2. Start adding transactions right away — no sign-in required
+3. Set a budget to track spending
+4. Sign in to create group pots and invite friends by email
+5. All data is automatically saved
 
 Or run locally:
 ```bash
