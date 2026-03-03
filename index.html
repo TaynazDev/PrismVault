@@ -103,7 +103,7 @@
             animation: fadeInDown 0.8s ease;
         }
 
-        /* Navbar logo — image + styled text */
+        /* Navbar logo â€” image + styled text */
         .navbar-logo {
             display: flex;
             align-items: center;
@@ -368,7 +368,7 @@
             flex-shrink: 0;
         }
 
-        /* Hamburger menu button — hidden on desktop */
+        /* Hamburger menu button â€” hidden on desktop */
         .hamburger {
             display: none;
             background: rgba(255, 255, 255, 0.07);
@@ -412,7 +412,7 @@
             transform: translateY(-7px) rotate(-45deg);
         }
 
-        /* Header actions collapse — visible on desktop, dropdown on mobile */
+        /* Header actions collapse â€” visible on desktop, dropdown on mobile */
         .header-actions-collapse {
             display: flex;
             align-items: center;
@@ -1818,7 +1818,7 @@
             color: #f87171;
         }
 
-        /* ── Budget Warning Banner ── */
+        /* â”€â”€ Budget Warning Banner â”€â”€ */
         .budget-banner {
             display: none;
             align-items: center;
@@ -1893,7 +1893,7 @@
             transform: scale(1.05);
         }
 
-        /* ── Inactivity Nudge ── */
+        /* â”€â”€ Inactivity Nudge â”€â”€ */
         .inactivity-nudge {
             display: none;
             align-items: center;
@@ -1966,7 +1966,7 @@
             transform: scale(1.05);
         }
 
-        /* ── Notification Permission Prompt ── */
+        /* â”€â”€ Notification Permission Prompt â”€â”€ */
         .notif-prompt {
             display: none;
             align-items: center;
@@ -2393,7 +2393,7 @@
             box-shadow: 0 0 0 3px rgba(var(--accent-1-rgb), 0.1), 0 0 16px rgba(var(--accent-2-rgb), 0.06);
         }
 
-        /* Fix border-radius with border-image (doesn't work together) — use outline trick */
+        /* Fix border-radius with border-image (doesn't work together) â€” use outline trick */
         select:focus, input:focus {
             border-image: none;
             border-color: var(--accent-1);
@@ -2536,7 +2536,7 @@
             transform: scale(1.05);
         }
 
-        /* ── Transaction Search & Filter Bar ── */
+        /* â”€â”€ Transaction Search & Filter Bar â”€â”€ */
         .txn-search-bar {
             display: flex;
             flex-wrap: wrap;
@@ -3639,6 +3639,236 @@
             opacity: 0.5;
         }
 
+        /* ===== CURRENCY SELECTOR ===== */
+        .currency-section h2 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+
+        .currency-selector-wrap {
+            position: relative;
+        }
+
+        .currency-search-input {
+            width: 100%;
+            box-sizing: border-box;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            padding: 12px 16px;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .currency-search-input::placeholder {
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        .currency-search-input:focus {
+            border-color: var(--accent-2);
+            box-shadow: 0 0 0 3px rgba(var(--accent-2-rgb), 0.12);
+        }
+
+        .currency-dropdown {
+            position: absolute;
+            top: calc(100% + 6px);
+            left: 0;
+            right: 0;
+            max-height: 260px;
+            overflow-y: auto;
+            background: rgba(15, 15, 25, 0.96);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 12px;
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.5);
+            z-index: 100;
+            display: none;
+            padding: 4px;
+        }
+
+        .currency-dropdown.open {
+            display: block;
+        }
+
+        .currency-dropdown::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .currency-dropdown::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .currency-dropdown::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 3px;
+        }
+
+        .currency-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .currency-option:hover,
+        .currency-option.active {
+            background: rgba(var(--accent-2-rgb), 0.12);
+        }
+
+        .currency-option .cur-flag {
+            font-size: 18px;
+            flex-shrink: 0;
+            width: 24px;
+            text-align: center;
+        }
+
+        .currency-option .cur-name {
+            flex: 1;
+            min-width: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .currency-option .cur-code {
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 12px;
+            flex-shrink: 0;
+        }
+
+        .currency-current {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            padding: 10px 16px;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 10px;
+            font-size: 14px;
+        }
+
+        .currency-current-flag {
+            font-size: 20px;
+        }
+
+        .currency-current-label {
+            flex: 1;
+            font-weight: 600;
+        }
+
+        .currency-current-code {
+            color: rgba(255, 255, 255, 0.45);
+            font-size: 12px;
+        }
+
+        .currency-updated {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.3);
+            margin-top: 10px;
+        }
+
+        /* Currency conversion modal */
+        .currency-modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .currency-modal-overlay.active {
+            display: flex;
+        }
+
+        .currency-modal {
+            background: rgba(20, 20, 35, 0.95);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 32px;
+            max-width: 440px;
+            width: 90%;
+            box-shadow: 0 16px 64px rgba(0, 0, 0, 0.5);
+            animation: slideIn 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .currency-modal h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .currency-modal p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.65);
+            line-height: 1.5;
+            margin-bottom: 24px;
+        }
+
+        .currency-modal-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .currency-modal-btn {
+            padding: 14px 20px;
+            border-radius: 12px;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .currency-modal-btn.convert {
+            background: linear-gradient(135deg, var(--accent-1) 0%, var(--accent-2) 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(var(--accent-1-rgb), 0.25);
+        }
+
+        .currency-modal-btn.convert:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(var(--accent-1-rgb), 0.4);
+        }
+
+        .currency-modal-btn.keep {
+            background: rgba(255, 255, 255, 0.06);
+            color: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .currency-modal-btn.keep:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .currency-modal-btn.cancel {
+            background: none;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 13px;
+            padding: 8px;
+        }
+
+        .currency-modal-btn.cancel:hover {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
         /* ===== MOBILE RESPONSIVE ===== */
 
         /* Tablet / small desktop */
@@ -3717,7 +3947,7 @@
             }
         }
 
-        /* Mobile — single column stacking + hamburger */
+        /* Mobile â€” single column stacking + hamburger */
         @media (max-width: 640px) {
             body {
                 padding: 12px;
@@ -4215,14 +4445,14 @@
                 <input type="text" class="profile-name-input" id="profileNameInput" placeholder="Display name" maxlength="24">
                 <div class="avatar-section-label">Pick an avatar</div>
                 <div class="avatar-grid" id="avatarGrid">
-                    <div class="avatar-option selected" data-avatar="👾">👾</div>
-                    <div class="avatar-option" data-avatar="🔥">🔥</div>
-                    <div class="avatar-option" data-avatar="🚀">🚀</div>
-                    <div class="avatar-option" data-avatar="💎">💎</div>
-                    <div class="avatar-option" data-avatar="🌈">🌈</div>
-                    <div class="avatar-option" data-avatar="🐱">🐱</div>
-                    <div class="avatar-option" data-avatar="🧊">🧊</div>
-                    <div class="avatar-option" data-avatar="✨">✨</div>
+                    <div class="avatar-option selected" data-avatar="ðŸ‘¾">ðŸ‘¾</div>
+                    <div class="avatar-option" data-avatar="ðŸ”¥">ðŸ”¥</div>
+                    <div class="avatar-option" data-avatar="ðŸš€">ðŸš€</div>
+                    <div class="avatar-option" data-avatar="ðŸ’Ž">ðŸ’Ž</div>
+                    <div class="avatar-option" data-avatar="ðŸŒˆ">ðŸŒˆ</div>
+                    <div class="avatar-option" data-avatar="ðŸ±">ðŸ±</div>
+                    <div class="avatar-option" data-avatar="ðŸ§Š">ðŸ§Š</div>
+                    <div class="avatar-option" data-avatar="âœ¨">âœ¨</div>
                 </div>
                 <button class="profile-save-btn" id="profileSaveBtn">Save Profile</button>
                 <button class="profile-skip-btn" id="profileSkipBtn">Skip for now</button>
@@ -4241,15 +4471,13 @@
                             <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <defs>
                                     <linearGradient id="prismGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                                        <stop offset="0%" stop-color="var(--accent-1)"/>
-                                        <stop offset="100%" stop-color="var(--accent-2)"/>
+                                        <stop offset="0%" id="logoGradStop1" stop-color="var(--accent-1)"/>
+                                        <stop offset="100%" id="logoGradStop2" stop-color="var(--accent-2)"/>
                                     </linearGradient>
                                 </defs>
-                                <polygon points="24,4 44,40 4,40" fill="url(#prismGrad)" opacity="0.9"/>
-                                <polygon points="24,12 38,38 10,38" fill="rgba(255,255,255,0.15)"/>
-                                <line x1="24" y1="4" x2="24" y2="40" stroke="rgba(255,255,255,0.25)" stroke-width="1"/>
-                                <line x1="24" y1="4" x2="44" y2="40" stroke="rgba(255,255,255,0.12)" stroke-width="0.5"/>
-                                <line x1="24" y1="4" x2="4" y2="40" stroke="rgba(255,255,255,0.12)" stroke-width="0.5"/>
+                                <circle cx="24" cy="24" r="22" fill="url(#prismGrad)" opacity="0.9"/>
+                                <circle cx="24" cy="24" r="18" fill="rgba(255,255,255,0.08)"/>
+                                <text x="24" y="33" text-anchor="middle" font-family="Inter, sans-serif" font-size="28" font-weight="700" fill="white">$</text>
                             </svg>
                         </div>
                         <span class="navbar-logo-text">
@@ -4267,7 +4495,7 @@
                     <div class="header-actions-collapse" id="headerActionsCollapse">
                         <button class="header-sign-in-btn" id="headerSignInBtn">Sign In</button>
                         <div class="user-profile hidden" id="userProfileArea">
-                            <div class="nav-avatar" id="navAvatar" title="Edit profile">👾</div>
+                            <div class="nav-avatar" id="navAvatar" title="Edit profile">ðŸ‘¾</div>
                             <span class="user-name" id="userNameDisplay">User</span>
                             <button class="sign-out-btn" id="signOutBtn">Sign Out</button>
                         </div>
@@ -4277,8 +4505,8 @@
 
         <!-- Notification Permission Prompt -->
         <div class="notif-prompt" id="notifPrompt">
-            <span class="notif-prompt-icon">🔔</span>
-            <span class="notif-prompt-text">Stay on top of your spending — enable notifications to get budget alerts even when the tab is in the background.</span>
+            <span class="notif-prompt-icon">ðŸ””</span>
+            <span class="notif-prompt-text">Stay on top of your spending â€” enable notifications to get budget alerts even when the tab is in the background.</span>
             <div class="notif-prompt-actions">
                 <button class="notif-prompt-btn allow" id="notifAllowBtn">Enable</button>
                 <button class="notif-prompt-btn dismiss" id="notifDismissBtn">Not now</button>
@@ -4287,8 +4515,8 @@
 
         <!-- Inactivity Nudge -->
         <div class="inactivity-nudge" id="inactivityNudge">
-            <span class="inactivity-nudge-icon">👀</span>
-            <span class="inactivity-nudge-text" id="inactivityNudgeText">You haven't logged anything in a while — <strong>don't fall behind!</strong></span>
+            <span class="inactivity-nudge-icon">ðŸ‘€</span>
+            <span class="inactivity-nudge-text" id="inactivityNudgeText">You haven't logged anything in a while â€” <strong>don't fall behind!</strong></span>
             <button class="inactivity-nudge-dismiss" id="inactivityNudgeDismiss" title="Dismiss">&times;</button>
         </div>
 
@@ -4303,8 +4531,8 @@
         <div class="weekly-report" id="weeklyReport" data-widget="report" style="display: none;">
             <div class="weekly-report-header">
                 <div class="weekly-report-title">
-                    <span class="weekly-report-title-icon">📊</span>
-                    <span class="weekly-report-title-text">Last Week’s Report</span>
+                    <span class="weekly-report-title-icon">ðŸ“Š</span>
+                    <span class="weekly-report-title-text">Last Weekâ€™s Report</span>
                 </div>
                 <button class="weekly-report-dismiss" id="weeklyReportDismiss" title="Dismiss">&times;</button>
             </div>
@@ -4314,31 +4542,31 @@
         <!-- Dashboard Stats -->
         <div class="stats-grid" data-widget="balance">
             <div class="stat-card balance-card">
-                <div class="stat-icon">💎</div>
+                <div class="stat-icon">ðŸ’Ž</div>
                 <div class="stat-label">Total Balance</div>
                 <div class="stat-value" id="totalBalance">$0.00</div>
             </div>
             <div class="stat-card income-card">
-                <div class="stat-icon">📈</div>
+                <div class="stat-icon">ðŸ“ˆ</div>
                 <div class="stat-label">Total Income</div>
                 <div class="stat-value" id="totalIncome">$0.00</div>
             </div>
             <div class="stat-card expense-card">
-                <div class="stat-icon">📉</div>
+                <div class="stat-icon">ðŸ“‰</div>
                 <div class="stat-label">Total Expenses</div>
                 <div class="stat-value" id="totalExpense">$0.00</div>
             </div>
             <div class="stat-card splurge-card" data-widget="splurge">
-                <div class="stat-icon">👑</div>
+                <div class="stat-icon">ðŸ‘‘</div>
                 <div class="stat-label">Biggest Splurge</div>
-                <div class="stat-value" id="splurgeAmount">—</div>
+                <div class="stat-value" id="splurgeAmount">â€”</div>
                 <div class="splurge-detail" id="splurgeDetail"></div>
             </div>
         </div>
 
         <!-- Spending Streak -->
         <div class="streak-card" id="streakCard" data-widget="streak">
-            <div class="streak-flame" id="streakFlame">🔥</div>
+            <div class="streak-flame" id="streakFlame">ðŸ”¥</div>
             <div class="streak-info">
                 <div class="streak-count-row">
                     <span class="streak-count" id="streakCount">0</span>
@@ -4383,7 +4611,7 @@
         <div class="treat-card" id="treatCard" data-widget="treat">
             <div class="treat-header">
                 <div class="treat-title-row">
-                    <span class="treat-icon">🎀</span>
+                    <span class="treat-icon">ðŸŽ€</span>
                     <span class="treat-title">Treat Yourself</span>
                 </div>
                 <div class="treat-amount-label" id="treatAmountLabel"></div>
@@ -4393,7 +4621,7 @@
                     <label for="treatAmount">Monthly Guilt-Free Budget</label>
                     <input type="number" id="treatAmount" placeholder="e.g. 100" step="0.01" min="0">
                 </div>
-                <button class="btn-sm" id="treatSaveBtn">🎉 Set</button>
+                <button class="btn-sm" id="treatSaveBtn">ðŸŽ‰ Set</button>
             </div>
             <div id="treatProgressArea" style="display: none;">
                 <div class="treat-progress-track">
@@ -4412,7 +4640,7 @@
         <!-- You Could Have Bought -->
         <div class="coulda-card" id="couldaCard">
             <div class="coulda-header">
-                <div class="coulda-icon" id="couldaIcon">🛒</div>
+                <div class="coulda-icon" id="couldaIcon">ðŸ›’</div>
                 <div class="coulda-label">This month you could have bought...</div>
             </div>
             <div class="coulda-value" id="couldaValue">
@@ -4424,7 +4652,7 @@
         <!-- Spending Heatmap -->
         <div class="heatmap-card" id="heatmapCard">
             <div class="heatmap-header">
-                <div class="heatmap-header-icon">🗓️</div>
+                <div class="heatmap-header-icon">ðŸ—“ï¸</div>
                 <h2>Spending Heatmap</h2>
                 <span class="heatmap-month-label" id="heatmapMonthLabel"></span>
             </div>
@@ -4457,7 +4685,7 @@
                 <div class="chart-container" id="chartContainer">
                     <canvas id="spendingChart"></canvas>
                     <div class="chart-empty" id="chartEmpty">
-                        <div class="chart-empty-icon">📊</div>
+                        <div class="chart-empty-icon">ðŸ“Š</div>
                         <p>Add expenses to see your<br>spending breakdown</p>
                     </div>
                 </div>
@@ -4466,7 +4694,7 @@
 
         <!-- Savings Goals -->
         <div class="glass-card savings-goals-section" data-widget="savings">
-            <h2>🎯 Savings Goals</h2>
+            <h2>ðŸŽ¯ Savings Goals</h2>
             <div class="goal-create-form">
                 <div class="goal-form-row">
                     <div class="form-group">
@@ -4490,7 +4718,7 @@
             </div>
             <div class="goals-list" id="goalsList">
                 <div class="goals-empty" id="goalsEmpty">
-                    <div class="goals-empty-icon">🏦</div>
+                    <div class="goals-empty-icon">ðŸ¦</div>
                     <p>No savings goals yet. Create one above!</p>
                 </div>
             </div>
@@ -4501,7 +4729,7 @@
             <h2>Group Pots</h2>
             <!-- Auth gate for pots -->
             <div class="pots-auth-gate" id="potsAuthGate" style="display: none;">
-                <div class="pots-auth-gate-icon">🔒</div>
+                <div class="pots-auth-gate-icon">ðŸ”’</div>
                 <p>Sign in to create and share Group Pots with friends</p>
                 <button class="btn-sm" id="potsSignInBtn">Sign In</button>
             </div>
@@ -4537,7 +4765,7 @@
             </div>
             <div class="pots-list" id="potsList">
                 <div class="pots-empty" id="potsEmpty">
-                    <div class="pots-empty-icon">🎯</div>
+                    <div class="pots-empty-icon">ðŸŽ¯</div>
                     <p>No group pots yet. Split a bill above!</p>
                 </div>
             </div>
@@ -4582,7 +4810,7 @@
 
             <div class="transactions-list" id="transactionsList">
                 <div class="empty-state">
-                    <div class="empty-state-icon">💳</div>
+                    <div class="empty-state-icon">ðŸ’³</div>
                     <p>No transactions yet. Add your first transaction above!</p>
                 </div>
             </div>
@@ -4590,11 +4818,11 @@
 
         <!-- Dashboard Widget Settings -->
         <div class="glass-card widget-settings">
-            <h2>🎛️ Dashboard Widgets</h2>
+            <h2>ðŸŽ›ï¸ Dashboard Widgets</h2>
             <div class="widget-toggle-list" id="widgetToggleList">
                 <div class="widget-toggle-row">
                     <div class="widget-toggle-info">
-                        <span class="widget-toggle-icon">💎</span>
+                        <span class="widget-toggle-icon">ðŸ’Ž</span>
                         <span class="widget-toggle-name">Balance</span>
                     </div>
                     <label class="toggle-switch">
@@ -4604,7 +4832,7 @@
                 </div>
                 <div class="widget-toggle-row">
                     <div class="widget-toggle-info">
-                        <span class="widget-toggle-icon">📊</span>
+                        <span class="widget-toggle-icon">ðŸ“Š</span>
                         <span class="widget-toggle-name">Budget Progress</span>
                     </div>
                     <label class="toggle-switch">
@@ -4614,7 +4842,7 @@
                 </div>
                 <div class="widget-toggle-row">
                     <div class="widget-toggle-info">
-                        <span class="widget-toggle-icon">🍩</span>
+                        <span class="widget-toggle-icon">ðŸ©</span>
                         <span class="widget-toggle-name">Spending Chart</span>
                     </div>
                     <label class="toggle-switch">
@@ -4624,7 +4852,7 @@
                 </div>
                 <div class="widget-toggle-row">
                     <div class="widget-toggle-info">
-                        <span class="widget-toggle-icon">🔥</span>
+                        <span class="widget-toggle-icon">ðŸ”¥</span>
                         <span class="widget-toggle-name">Streak</span>
                     </div>
                     <label class="toggle-switch">
@@ -4634,7 +4862,7 @@
                 </div>
                 <div class="widget-toggle-row">
                     <div class="widget-toggle-info">
-                        <span class="widget-toggle-icon">👑</span>
+                        <span class="widget-toggle-icon">ðŸ‘‘</span>
                         <span class="widget-toggle-name">Biggest Splurge</span>
                     </div>
                     <label class="toggle-switch">
@@ -4644,7 +4872,7 @@
                 </div>
                 <div class="widget-toggle-row">
                     <div class="widget-toggle-info">
-                        <span class="widget-toggle-icon">🎀</span>
+                        <span class="widget-toggle-icon">ðŸŽ€</span>
                         <span class="widget-toggle-name">Treat Yourself Fund</span>
                     </div>
                     <label class="toggle-switch">
@@ -4654,7 +4882,7 @@
                 </div>
                 <div class="widget-toggle-row">
                     <div class="widget-toggle-info">
-                        <span class="widget-toggle-icon">📋</span>
+                        <span class="widget-toggle-icon">ðŸ“‹</span>
                         <span class="widget-toggle-name">Weekly Report</span>
                     </div>
                     <label class="toggle-switch">
@@ -4664,7 +4892,7 @@
                 </div>
                 <div class="widget-toggle-row">
                     <div class="widget-toggle-info">
-                        <span class="widget-toggle-icon">🎯</span>
+                        <span class="widget-toggle-icon">ðŸŽ¯</span>
                         <span class="widget-toggle-name">Savings Goals</span>
                     </div>
                     <label class="toggle-switch">
@@ -4677,9 +4905,9 @@
 
         <!-- Manage Categories -->
         <div class="glass-card categories-section">
-            <h2>⚙️ Manage Categories</h2>
+            <h2>âš™ï¸ Manage Categories</h2>
             <div class="categories-add-form">
-                <input type="text" id="catEmojiInput" class="cat-emoji-input" placeholder="🏷️" maxlength="2">
+                <input type="text" id="catEmojiInput" class="cat-emoji-input" placeholder="ðŸ·ï¸" maxlength="2">
                 <input type="text" id="catNameInput" placeholder="Category name..." maxlength="24">
                 <button type="button" class="categories-add-btn" id="addCategoryBtn">+ Add</button>
             </div>
@@ -4693,7 +4921,7 @@
 
         <!-- Theme Picker -->
         <div class="glass-card theme-picker-section">
-            <h2>🎨 Theme</h2>
+            <h2>ðŸŽ¨ Theme</h2>
             <div class="theme-grid" id="themeGrid">
                 <div class="theme-option active" data-theme="default">
                     <div class="theme-swatch swatch-default"></div>
@@ -4707,6 +4935,34 @@
                     <div class="theme-swatch swatch-green-teal"></div>
                     <span class="theme-label">Green &amp; Teal</span>
                 </div>
+            </div>
+        </div>
+
+        <!-- Currency Selector -->
+        <div class="glass-card currency-section">
+            <h2>ðŸ’± Currency</h2>
+            <div class="currency-current" id="currencyCurrentDisplay">
+                <span class="currency-current-flag" id="currencyCurrentFlag">ðŸ‡ºðŸ‡¸</span>
+                <span class="currency-current-label" id="currencyCurrentLabel">US Dollar</span>
+                <span class="currency-current-code" id="currencyCurrentCode">USD</span>
+            </div>
+            <div class="currency-selector-wrap">
+                <input type="text" class="currency-search-input" id="currencySearchInput" placeholder="Search currency..." autocomplete="off">
+                <div class="currency-dropdown" id="currencyDropdown"></div>
+            </div>
+            <div class="currency-updated" id="currencyUpdated"></div>
+        </div>
+    </div>
+
+    <!-- Currency Conversion Modal -->
+    <div class="currency-modal-overlay" id="currencyModalOverlay">
+        <div class="currency-modal">
+            <h3>ðŸ’± Change Currency</h3>
+            <p id="currencyModalText">You already have data saved. What would you like to do?</p>
+            <div class="currency-modal-actions">
+                <button class="currency-modal-btn convert" id="currencyConvertBtn">Convert my figures</button>
+                <button class="currency-modal-btn keep" id="currencyKeepBtn">Keep my figures</button>
+                <button class="currency-modal-btn cancel" id="currencyCancelBtn">Cancel</button>
             </div>
         </div>
     </div>
@@ -4752,7 +5008,7 @@
                 signInBtn.classList.add('hidden');
                 profileArea.classList.remove('hidden');
                 document.getElementById('userNameDisplay').textContent = currentUser.name;
-                if (navAvatar) navAvatar.textContent = currentUser.avatar || '👾';
+                if (navAvatar) navAvatar.textContent = currentUser.avatar || 'ðŸ‘¾';
                 if (mobileSignIn) mobileSignIn.style.display = 'none';
                 if (mobileSignOut) { mobileSignOut.style.display = ''; mobileSignOut.textContent = 'Sign Out (' + currentUser.name + ')'; }
             } else {
@@ -4804,7 +5060,7 @@
                 await db.collection('users').doc(user.uid).set({
                     uid: user.uid,
                     name: currentUser.name,
-                    avatar: currentUser.avatar || '👾',
+                    avatar: currentUser.avatar || 'ðŸ‘¾',
                     email: user.email,
                     emailLower: (user.email || '').toLowerCase(),
                     updatedAt: firebase.firestore.FieldValue.serverTimestamp()
@@ -4941,7 +5197,7 @@
             }
             // Reset avatar selection
             document.querySelectorAll('#avatarGrid .avatar-option').forEach(opt => opt.classList.remove('selected'));
-            const currentAvatar = (currentUser && currentUser.avatar) || '👾';
+            const currentAvatar = (currentUser && currentUser.avatar) || 'ðŸ‘¾';
             const match = document.querySelector(`#avatarGrid .avatar-option[data-avatar="${currentAvatar}"]`);
             if (match) match.classList.add('selected');
             else document.querySelector('#avatarGrid .avatar-option').classList.add('selected');
@@ -4968,7 +5224,7 @@
             const name = nameInput.value.trim();
             if (!name) { nameInput.style.borderColor = getComputedStyle(document.documentElement).getPropertyValue('--accent-1').trim(); nameInput.focus(); return; }
             const selectedAvatar = document.querySelector('#avatarGrid .avatar-option.selected');
-            const avatar = selectedAvatar ? selectedAvatar.dataset.avatar : '👾';
+            const avatar = selectedAvatar ? selectedAvatar.dataset.avatar : 'ðŸ‘¾';
 
             saveBtn.disabled = true;
             saveBtn.textContent = 'Saving...';
@@ -5000,9 +5256,9 @@
         document.getElementById('profileSkipBtn').addEventListener('click', () => {
             // Set default avatar so the prompt doesn't re-appear
             if (currentUser) {
-                currentUser.avatar = '👾';
+                currentUser.avatar = 'ðŸ‘¾';
                 localStorage.setItem('prismPayUser', JSON.stringify(currentUser));
-                db.collection('users').doc(currentUser.uid).set({ avatar: '👾' }, { merge: true });
+                db.collection('users').doc(currentUser.uid).set({ avatar: 'ðŸ‘¾' }, { merge: true });
                 updateHeaderAuth();
             }
             closeProfileModal();
@@ -5041,8 +5297,8 @@
                 <div class="form-group">
                     <label>Type</label>
                     <div class="type-selector">
-                        <div class="type-option selected" data-type="expense">💸 Expense</div>
-                        <div class="type-option" data-type="income">💰 Income</div>
+                        <div class="type-option selected" data-type="expense">ðŸ’¸ Expense</div>
+                        <div class="type-option" data-type="income">ðŸ’° Income</div>
                     </div>
                 </div>
                 <div class="form-group">
@@ -5057,7 +5313,7 @@
                         <option value="Subscriptions">Subscriptions</option>
                         <option value="Going Out">Going Out</option>
                         <option value="Clothes">Clothes</option>
-                        <option value="Treat Yourself">🎀 Treat Yourself</option>
+                        <option value="Treat Yourself">ðŸŽ€ Treat Yourself</option>
                         <option value="Random">Random</option>
                         <option value="Other">Other</option>
                     </select>
@@ -5069,7 +5325,7 @@
                 <div class="recurring-row">
                     <div>
                         <div class="recurring-label">
-                            <span class="recurring-label-icon">🔁</span> Recurring
+                            <span class="recurring-label-icon">ðŸ”</span> Recurring
                         </div>
                         <div class="recurring-hint">Auto-logs on the same day every month</div>
                     </div>
@@ -5086,7 +5342,7 @@
     <script>
         // ===== SCOPED LOCALSTORAGE HELPERS =====
         function getScopedKey(key) {
-            // Always use plain key — data is local to the browser
+            // Always use plain key â€” data is local to the browser
             return key;
         }
 
@@ -5115,14 +5371,14 @@
 
         // Default categories (cannot be deleted)
         const defaultCategories = [
-            { name: 'Food', emoji: '🍔' },
-            { name: 'Transport', emoji: '🚗' },
-            { name: 'Subscriptions', emoji: '📱' },
-            { name: 'Going Out', emoji: '🍻' },
-            { name: 'Clothes', emoji: '👕' },
-            { name: 'Treat Yourself', emoji: '🎀' },
-            { name: 'Random', emoji: '🎲' },
-            { name: 'Other', emoji: '📦' }
+            { name: 'Food', emoji: 'ðŸ”' },
+            { name: 'Transport', emoji: 'ðŸš—' },
+            { name: 'Subscriptions', emoji: 'ðŸ“±' },
+            { name: 'Going Out', emoji: 'ðŸ»' },
+            { name: 'Clothes', emoji: 'ðŸ‘•' },
+            { name: 'Treat Yourself', emoji: 'ðŸŽ€' },
+            { name: 'Random', emoji: 'ðŸŽ²' },
+            { name: 'Other', emoji: 'ðŸ“¦' }
         ];
 
         // DOM Elements
@@ -5176,7 +5432,464 @@
             applyTheme(saved);
         }
 
-        // Initialize on page load — no auth required
+        // ===== CURRENCY SYSTEM =====
+        const ALL_CURRENCIES = [
+            {code:'USD',name:'US Dollar',symbol:'$',flag:'ðŸ‡ºðŸ‡¸'},
+            {code:'GBP',name:'British Pound',symbol:'Â£',flag:'ðŸ‡¬ðŸ‡§'},
+            {code:'EUR',name:'Euro',symbol:'â‚¬',flag:'ðŸ‡ªðŸ‡º'},
+            {code:'CAD',name:'Canadian Dollar',symbol:'CA$',flag:'ðŸ‡¨ðŸ‡¦'},
+            {code:'AUD',name:'Australian Dollar',symbol:'A$',flag:'ðŸ‡¦ðŸ‡º'},
+            {code:'JPY',name:'Japanese Yen',symbol:'Â¥',flag:'ðŸ‡¯ðŸ‡µ'},
+            {code:'CNY',name:'Chinese Yuan',symbol:'Â¥',flag:'ðŸ‡¨ðŸ‡³'},
+            {code:'INR',name:'Indian Rupee',symbol:'â‚¹',flag:'ðŸ‡®ðŸ‡³'},
+            {code:'KRW',name:'South Korean Won',symbol:'â‚©',flag:'ðŸ‡°ðŸ‡·'},
+            {code:'CHF',name:'Swiss Franc',symbol:'CHF',flag:'ðŸ‡¨ðŸ‡­'},
+            {code:'SEK',name:'Swedish Krona',symbol:'kr',flag:'ðŸ‡¸ðŸ‡ª'},
+            {code:'NOK',name:'Norwegian Krone',symbol:'kr',flag:'ðŸ‡³ðŸ‡´'},
+            {code:'DKK',name:'Danish Krone',symbol:'kr',flag:'ðŸ‡©ðŸ‡°'},
+            {code:'NZD',name:'New Zealand Dollar',symbol:'NZ$',flag:'ðŸ‡³ðŸ‡¿'},
+            {code:'SGD',name:'Singapore Dollar',symbol:'S$',flag:'ðŸ‡¸ðŸ‡¬'},
+            {code:'HKD',name:'Hong Kong Dollar',symbol:'HK$',flag:'ðŸ‡­ðŸ‡°'},
+            {code:'TWD',name:'Taiwan Dollar',symbol:'NT$',flag:'ðŸ‡¹ðŸ‡¼'},
+            {code:'MXN',name:'Mexican Peso',symbol:'MX$',flag:'ðŸ‡²ðŸ‡½'},
+            {code:'BRL',name:'Brazilian Real',symbol:'R$',flag:'ðŸ‡§ðŸ‡·'},
+            {code:'ARS',name:'Argentine Peso',symbol:'AR$',flag:'ðŸ‡¦ðŸ‡·'},
+            {code:'CLP',name:'Chilean Peso',symbol:'CL$',flag:'ðŸ‡¨ðŸ‡±'},
+            {code:'COP',name:'Colombian Peso',symbol:'CO$',flag:'ðŸ‡¨ðŸ‡´'},
+            {code:'PEN',name:'Peruvian Sol',symbol:'S/',flag:'ðŸ‡µðŸ‡ª'},
+            {code:'UYU',name:'Uruguayan Peso',symbol:'$U',flag:'ðŸ‡ºðŸ‡¾'},
+            {code:'ZAR',name:'South African Rand',symbol:'R',flag:'ðŸ‡¿ðŸ‡¦'},
+            {code:'TRY',name:'Turkish Lira',symbol:'â‚º',flag:'ðŸ‡¹ðŸ‡·'},
+            {code:'RUB',name:'Russian Ruble',symbol:'â‚½',flag:'ðŸ‡·ðŸ‡º'},
+            {code:'UAH',name:'Ukrainian Hryvnia',symbol:'â‚´',flag:'ðŸ‡ºðŸ‡¦'},
+            {code:'PLN',name:'Polish Zloty',symbol:'zÅ‚',flag:'ðŸ‡µðŸ‡±'},
+            {code:'CZK',name:'Czech Koruna',symbol:'KÄ',flag:'ðŸ‡¨ðŸ‡¿'},
+            {code:'HUF',name:'Hungarian Forint',symbol:'Ft',flag:'ðŸ‡­ðŸ‡º'},
+            {code:'RON',name:'Romanian Leu',symbol:'lei',flag:'ðŸ‡·ðŸ‡´'},
+            {code:'BGN',name:'Bulgarian Lev',symbol:'Ð»Ð²',flag:'ðŸ‡§ðŸ‡¬'},
+            {code:'HRK',name:'Croatian Kuna',symbol:'kn',flag:'ðŸ‡­ðŸ‡·'},
+            {code:'RSD',name:'Serbian Dinar',symbol:'din',flag:'ðŸ‡·ðŸ‡¸'},
+            {code:'ISK',name:'Icelandic Krona',symbol:'kr',flag:'ðŸ‡®ðŸ‡¸'},
+            {code:'THB',name:'Thai Baht',symbol:'à¸¿',flag:'ðŸ‡¹ðŸ‡­'},
+            {code:'MYR',name:'Malaysian Ringgit',symbol:'RM',flag:'ðŸ‡²ðŸ‡¾'},
+            {code:'IDR',name:'Indonesian Rupiah',symbol:'Rp',flag:'ðŸ‡®ðŸ‡©'},
+            {code:'PHP',name:'Philippine Peso',symbol:'â‚±',flag:'ðŸ‡µðŸ‡­'},
+            {code:'VND',name:'Vietnamese Dong',symbol:'â‚«',flag:'ðŸ‡»ðŸ‡³'},
+            {code:'PKR',name:'Pakistani Rupee',symbol:'â‚¨',flag:'ðŸ‡µðŸ‡°'},
+            {code:'BDT',name:'Bangladeshi Taka',symbol:'à§³',flag:'ðŸ‡§ðŸ‡©'},
+            {code:'LKR',name:'Sri Lankan Rupee',symbol:'Rs',flag:'ðŸ‡±ðŸ‡°'},
+            {code:'NPR',name:'Nepalese Rupee',symbol:'Rs',flag:'ðŸ‡³ðŸ‡µ'},
+            {code:'MMK',name:'Myanmar Kyat',symbol:'K',flag:'ðŸ‡²ðŸ‡²'},
+            {code:'KHR',name:'Cambodian Riel',symbol:'áŸ›',flag:'ðŸ‡°ðŸ‡­'},
+            {code:'LAK',name:'Lao Kip',symbol:'â‚­',flag:'ðŸ‡±ðŸ‡¦'},
+            {code:'AED',name:'UAE Dirham',symbol:'Ø¯.Ø¥',flag:'ðŸ‡¦ðŸ‡ª'},
+            {code:'SAR',name:'Saudi Riyal',symbol:'ï·¼',flag:'ðŸ‡¸ðŸ‡¦'},
+            {code:'QAR',name:'Qatari Riyal',symbol:'ï·¼',flag:'ðŸ‡¶ðŸ‡¦'},
+            {code:'KWD',name:'Kuwaiti Dinar',symbol:'Ø¯.Ùƒ',flag:'ðŸ‡°ðŸ‡¼'},
+            {code:'BHD',name:'Bahraini Dinar',symbol:'BD',flag:'ðŸ‡§ðŸ‡­'},
+            {code:'OMR',name:'Omani Rial',symbol:'ï·¼',flag:'ðŸ‡´ðŸ‡²'},
+            {code:'JOD',name:'Jordanian Dinar',symbol:'JD',flag:'ðŸ‡¯ðŸ‡´'},
+            {code:'LBP',name:'Lebanese Pound',symbol:'Ù„.Ù„',flag:'ðŸ‡±ðŸ‡§'},
+            {code:'IQD',name:'Iraqi Dinar',symbol:'Ø¹.Ø¯',flag:'ðŸ‡®ðŸ‡¶'},
+            {code:'IRR',name:'Iranian Rial',symbol:'ï·¼',flag:'ðŸ‡®ðŸ‡·'},
+            {code:'EGP',name:'Egyptian Pound',symbol:'EÂ£',flag:'ðŸ‡ªðŸ‡¬'},
+            {code:'MAD',name:'Moroccan Dirham',symbol:'MAD',flag:'ðŸ‡²ðŸ‡¦'},
+            {code:'TND',name:'Tunisian Dinar',symbol:'DT',flag:'ðŸ‡¹ðŸ‡³'},
+            {code:'DZD',name:'Algerian Dinar',symbol:'Ø¯.Ø¬',flag:'ðŸ‡©ðŸ‡¿'},
+            {code:'LYD',name:'Libyan Dinar',symbol:'LD',flag:'ðŸ‡±ðŸ‡¾'},
+            {code:'NGN',name:'Nigerian Naira',symbol:'â‚¦',flag:'ðŸ‡³ðŸ‡¬'},
+            {code:'GHS',name:'Ghanaian Cedi',symbol:'â‚µ',flag:'ðŸ‡¬ðŸ‡­'},
+            {code:'KES',name:'Kenyan Shilling',symbol:'KSh',flag:'ðŸ‡°ðŸ‡ª'},
+            {code:'TZS',name:'Tanzanian Shilling',symbol:'TSh',flag:'ðŸ‡¹ðŸ‡¿'},
+            {code:'UGX',name:'Ugandan Shilling',symbol:'USh',flag:'ðŸ‡ºðŸ‡¬'},
+            {code:'ETB',name:'Ethiopian Birr',symbol:'Br',flag:'ðŸ‡ªðŸ‡¹'},
+            {code:'RWF',name:'Rwandan Franc',symbol:'RF',flag:'ðŸ‡·ðŸ‡¼'},
+            {code:'XOF',name:'West African CFA Franc',symbol:'CFA',flag:'ðŸŒ'},
+            {code:'XAF',name:'Central African CFA Franc',symbol:'FCFA',flag:'ðŸŒ'},
+            {code:'MUR',name:'Mauritian Rupee',symbol:'â‚¨',flag:'ðŸ‡²ðŸ‡º'},
+            {code:'BWP',name:'Botswana Pula',symbol:'P',flag:'ðŸ‡§ðŸ‡¼'},
+            {code:'MZN',name:'Mozambican Metical',symbol:'MT',flag:'ðŸ‡²ðŸ‡¿'},
+            {code:'AOA',name:'Angolan Kwanza',symbol:'Kz',flag:'ðŸ‡¦ðŸ‡´'},
+            {code:'CDF',name:'Congolese Franc',symbol:'FC',flag:'ðŸ‡¨ðŸ‡©'},
+            {code:'JMD',name:'Jamaican Dollar',symbol:'J$',flag:'ðŸ‡¯ðŸ‡²'},
+            {code:'TTD',name:'Trinidad Dollar',symbol:'TT$',flag:'ðŸ‡¹ðŸ‡¹'},
+            {code:'BBD',name:'Barbadian Dollar',symbol:'Bds$',flag:'ðŸ‡§ðŸ‡§'},
+            {code:'BSD',name:'Bahamian Dollar',symbol:'B$',flag:'ðŸ‡§ðŸ‡¸'},
+            {code:'BZD',name:'Belize Dollar',symbol:'BZ$',flag:'ðŸ‡§ðŸ‡¿'},
+            {code:'GTQ',name:'Guatemalan Quetzal',symbol:'Q',flag:'ðŸ‡¬ðŸ‡¹'},
+            {code:'HNL',name:'Honduran Lempira',symbol:'L',flag:'ðŸ‡­ðŸ‡³'},
+            {code:'NIO',name:'Nicaraguan Cordoba',symbol:'C$',flag:'ðŸ‡³ðŸ‡®'},
+            {code:'CRC',name:'Costa Rican Colon',symbol:'â‚¡',flag:'ðŸ‡¨ðŸ‡·'},
+            {code:'PAB',name:'Panamanian Balboa',symbol:'B/.',flag:'ðŸ‡µðŸ‡¦'},
+            {code:'DOP',name:'Dominican Peso',symbol:'RD$',flag:'ðŸ‡©ðŸ‡´'},
+            {code:'CUP',name:'Cuban Peso',symbol:'â‚±',flag:'ðŸ‡¨ðŸ‡º'},
+            {code:'BOB',name:'Bolivian Boliviano',symbol:'Bs',flag:'ðŸ‡§ðŸ‡´'},
+            {code:'PYG',name:'Paraguayan Guarani',symbol:'â‚²',flag:'ðŸ‡µðŸ‡¾'},
+            {code:'VES',name:'Venezuelan Bolivar',symbol:'Bs.S',flag:'ðŸ‡»ðŸ‡ª'},
+            {code:'GEL',name:'Georgian Lari',symbol:'â‚¾',flag:'ðŸ‡¬ðŸ‡ª'},
+            {code:'AMD',name:'Armenian Dram',symbol:'Ö',flag:'ðŸ‡¦ðŸ‡²'},
+            {code:'AZN',name:'Azerbaijani Manat',symbol:'â‚¼',flag:'ðŸ‡¦ðŸ‡¿'},
+            {code:'KZT',name:'Kazakhstani Tenge',symbol:'â‚¸',flag:'ðŸ‡°ðŸ‡¿'},
+            {code:'UZS',name:'Uzbekistani Som',symbol:'ÑÑžÐ¼',flag:'ðŸ‡ºðŸ‡¿'},
+            {code:'KGS',name:'Kyrgystani Som',symbol:'ÑÐ¾Ð¼',flag:'ðŸ‡°ðŸ‡¬'},
+            {code:'TJS',name:'Tajikistani Somoni',symbol:'SM',flag:'ðŸ‡¹ðŸ‡¯'},
+            {code:'TMT',name:'Turkmenistani Manat',symbol:'T',flag:'ðŸ‡¹ðŸ‡²'},
+            {code:'MNT',name:'Mongolian Tugrik',symbol:'â‚®',flag:'ðŸ‡²ðŸ‡³'},
+            {code:'AFN',name:'Afghan Afghani',symbol:'Ø‹',flag:'ðŸ‡¦ðŸ‡«'},
+            {code:'SCR',name:'Seychellois Rupee',symbol:'â‚¨',flag:'ðŸ‡¸ðŸ‡¨'},
+            {code:'MVR',name:'Maldivian Rufiyaa',symbol:'Rf',flag:'ðŸ‡²ðŸ‡»'},
+            {code:'BND',name:'Brunei Dollar',symbol:'B$',flag:'ðŸ‡§ðŸ‡³'},
+            {code:'FJD',name:'Fijian Dollar',symbol:'FJ$',flag:'ðŸ‡«ðŸ‡¯'},
+            {code:'PGK',name:'Papua New Guinean Kina',symbol:'K',flag:'ðŸ‡µðŸ‡¬'},
+            {code:'WST',name:'Samoan Tala',symbol:'WS$',flag:'ðŸ‡¼ðŸ‡¸'},
+            {code:'TOP',name:'Tongan PaÊ»anga',symbol:'T$',flag:'ðŸ‡¹ðŸ‡´'},
+            {code:'SBD',name:'Solomon Islands Dollar',symbol:'SI$',flag:'ðŸ‡¸ðŸ‡§'},
+            {code:'VUV',name:'Vanuatu Vatu',symbol:'VT',flag:'ðŸ‡»ðŸ‡º'},
+            {code:'ALL',name:'Albanian Lek',symbol:'L',flag:'ðŸ‡¦ðŸ‡±'},
+            {code:'BAM',name:'Bosnia Mark',symbol:'KM',flag:'ðŸ‡§ðŸ‡¦'},
+            {code:'MKD',name:'Macedonian Denar',symbol:'Ð´ÐµÐ½',flag:'ðŸ‡²ðŸ‡°'},
+            {code:'MDL',name:'Moldovan Leu',symbol:'L',flag:'ðŸ‡²ðŸ‡©'},
+            {code:'BYN',name:'Belarusian Ruble',symbol:'Br',flag:'ðŸ‡§ðŸ‡¾'},
+            {code:'GIP',name:'Gibraltar Pound',symbol:'Â£',flag:'ðŸ‡¬ðŸ‡®'},
+            {code:'FKP',name:'Falkland Islands Pound',symbol:'Â£',flag:'ðŸ‡«ðŸ‡°'},
+            {code:'SHP',name:'Saint Helena Pound',symbol:'Â£',flag:'ðŸ‡¸ðŸ‡­'},
+            {code:'SDG',name:'Sudanese Pound',symbol:'Ø¬.Ø³',flag:'ðŸ‡¸ðŸ‡©'},
+            {code:'SSP',name:'South Sudanese Pound',symbol:'Â£',flag:'ðŸ‡¸ðŸ‡¸'},
+            {code:'ERN',name:'Eritrean Nakfa',symbol:'Nfk',flag:'ðŸ‡ªðŸ‡·'},
+            {code:'DJF',name:'Djiboutian Franc',symbol:'Fdj',flag:'ðŸ‡©ðŸ‡¯'},
+            {code:'SOS',name:'Somali Shilling',symbol:'Sh',flag:'ðŸ‡¸ðŸ‡´'},
+            {code:'MGA',name:'Malagasy Ariary',symbol:'Ar',flag:'ðŸ‡²ðŸ‡¬'},
+            {code:'MWK',name:'Malawian Kwacha',symbol:'MK',flag:'ðŸ‡²ðŸ‡¼'},
+            {code:'ZMW',name:'Zambian Kwacha',symbol:'ZK',flag:'ðŸ‡¿ðŸ‡²'},
+            {code:'ZWL',name:'Zimbabwean Dollar',symbol:'Z$',flag:'ðŸ‡¿ðŸ‡¼'},
+            {code:'NAD',name:'Namibian Dollar',symbol:'N$',flag:'ðŸ‡³ðŸ‡¦'},
+            {code:'SZL',name:'Eswatini Lilangeni',symbol:'E',flag:'ðŸ‡¸ðŸ‡¿'},
+            {code:'LSL',name:'Lesotho Loti',symbol:'M',flag:'ðŸ‡±ðŸ‡¸'},
+            {code:'GMD',name:'Gambian Dalasi',symbol:'D',flag:'ðŸ‡¬ðŸ‡²'},
+            {code:'SLL',name:'Sierra Leonean Leone',symbol:'Le',flag:'ðŸ‡¸ðŸ‡±'},
+            {code:'GNF',name:'Guinean Franc',symbol:'FG',flag:'ðŸ‡¬ðŸ‡³'},
+            {code:'LRD',name:'Liberian Dollar',symbol:'L$',flag:'ðŸ‡±ðŸ‡·'},
+            {code:'CVE',name:'Cape Verdean Escudo',symbol:'Esc',flag:'ðŸ‡¨ðŸ‡»'},
+            {code:'STN',name:'Sao Tome Dobra',symbol:'Db',flag:'ðŸ‡¸ðŸ‡¹'},
+            {code:'KMF',name:'Comorian Franc',symbol:'CF',flag:'ðŸ‡°ðŸ‡²'},
+            {code:'BTN',name:'Bhutanese Ngultrum',symbol:'Nu',flag:'ðŸ‡§ðŸ‡¹'},
+            {code:'SYP',name:'Syrian Pound',symbol:'Â£S',flag:'ðŸ‡¸ðŸ‡¾'},
+            {code:'YER',name:'Yemeni Rial',symbol:'ï·¼',flag:'ðŸ‡¾ðŸ‡ª'},
+            {code:'HTG',name:'Haitian Gourde',symbol:'G',flag:'ðŸ‡­ðŸ‡¹'},
+            {code:'SRD',name:'Surinamese Dollar',symbol:'$',flag:'ðŸ‡¸ðŸ‡·'},
+            {code:'GYD',name:'Guyanese Dollar',symbol:'G$',flag:'ðŸ‡¬ðŸ‡¾'},
+            {code:'KYD',name:'Cayman Islands Dollar',symbol:'CI$',flag:'ðŸ‡°ðŸ‡¾'},
+            {code:'BMD',name:'Bermudian Dollar',symbol:'$',flag:'ðŸ‡§ðŸ‡²'},
+            {code:'AWG',name:'Aruban Florin',symbol:'Æ’',flag:'ðŸ‡¦ðŸ‡¼'},
+            {code:'ANG',name:'Netherlands Antillean Guilder',symbol:'Æ’',flag:'ðŸ‡¨ðŸ‡¼'},
+            {code:'XCD',name:'East Caribbean Dollar',symbol:'EC$',flag:'ðŸŒŽ'},
+            {code:'XPF',name:'CFP Franc',symbol:'â‚£',flag:'ðŸŒ'},
+            // Precious metals
+            {code:'XAU',name:'Gold (troy oz)',symbol:'XAU',flag:'ðŸ¥‡'},
+            {code:'XAG',name:'Silver (troy oz)',symbol:'XAG',flag:'ðŸ¥ˆ'},
+            {code:'XPT',name:'Platinum (troy oz)',symbol:'XPT',flag:'âšª'},
+            {code:'XPD',name:'Palladium (troy oz)',symbol:'XPD',flag:'â¬œ'},
+            // Crypto
+            {code:'BTC',name:'Bitcoin',symbol:'â‚¿',flag:'ðŸª™'},
+            {code:'ETH',name:'Ethereum',symbol:'Îž',flag:'ðŸ’Ž'}
+        ];
+
+        let selectedCurrency = null;
+        let exchangeRates = null;
+        let exchangeRatesTimestamp = null;
+        let pendingCurrencyChange = null;
+
+        function getDefaultCurrencyCode() {
+            try {
+                const fmt = new Intl.NumberFormat(undefined, { style: 'currency', currency: 'USD' });
+                const resolved = fmt.resolvedOptions();
+                const locale = navigator.language || navigator.languages?.[0] || 'en-US';
+                // Try to detect from locale
+                const regionFmt = new Intl.NumberFormat(locale, { style: 'currency', currency: 'USD' });
+                // Use Intl.DisplayNames to map region to currency
+                const parts = locale.split('-');
+                const region = parts.length > 1 ? parts[parts.length - 1].toUpperCase() : null;
+                const regionCurrencyMap = {
+                    'US':'USD','GB':'GBP','AU':'AUD','CA':'CAD','NZ':'NZD','JP':'JPY',
+                    'CN':'CNY','IN':'INR','KR':'KRW','CH':'CHF','SE':'SEK','NO':'NOK',
+                    'DK':'DKK','SG':'SGD','HK':'HKD','TW':'TWD','MX':'MXN','BR':'BRL',
+                    'ZA':'ZAR','TR':'TRY','RU':'RUB','PL':'PLN','CZ':'CZK','HU':'HUF',
+                    'RO':'RON','TH':'THB','MY':'MYR','ID':'IDR','PH':'PHP','VN':'VND',
+                    'PK':'PKR','AE':'AED','SA':'SAR','EG':'EGP','NG':'NGN','KE':'KES',
+                    'GH':'GHS','DE':'EUR','FR':'EUR','IT':'EUR','ES':'EUR','NL':'EUR',
+                    'BE':'EUR','AT':'EUR','IE':'EUR','PT':'EUR','FI':'EUR','GR':'EUR',
+                    'SK':'EUR','SI':'EUR','LU':'EUR','MT':'EUR','CY':'EUR','EE':'EUR',
+                    'LV':'EUR','LT':'EUR','HR':'EUR'
+                };
+                if (region && regionCurrencyMap[region]) {
+                    const code = regionCurrencyMap[region];
+                    if (ALL_CURRENCIES.some(c => c.code === code)) return code;
+                }
+            } catch (e) {}
+            return 'USD';
+        }
+
+        function getCurrencyInfo(code) {
+            return ALL_CURRENCIES.find(c => c.code === code) || ALL_CURRENCIES[0];
+        }
+
+        function getCurrencySymbol() {
+            return selectedCurrency ? getCurrencyInfo(selectedCurrency).symbol : '$';
+        }
+
+        function fmt(amount) {
+            const sym = getCurrencySymbol();
+            return `${sym}${Math.abs(amount).toFixed(2)}`;
+        }
+
+        function fmtSigned(amount, type) {
+            const sym = getCurrencySymbol();
+            const sign = type === 'income' ? '+' : '-';
+            return `${sign}${sym}${Math.abs(amount).toFixed(2)}`;
+        }
+
+        function loadCurrencySettings() {
+            const saved = localStorage.getItem(getScopedKey('prismPayCurrency'));
+            if (saved) {
+                selectedCurrency = saved;
+            } else {
+                selectedCurrency = getDefaultCurrencyCode();
+            }
+            // Load cached rates
+            const cachedRates = localStorage.getItem(getScopedKey('prismPayExchangeRates'));
+            const cachedTs = localStorage.getItem(getScopedKey('prismPayExchangeRatesTs'));
+            if (cachedRates && cachedTs) {
+                try {
+                    exchangeRates = JSON.parse(cachedRates);
+                    exchangeRatesTimestamp = parseInt(cachedTs, 10);
+                } catch (e) {}
+            }
+        }
+
+        function saveCurrencySettings() {
+            localStorage.setItem(getScopedKey('prismPayCurrency'), selectedCurrency);
+        }
+
+        async function fetchExchangeRates() {
+            try {
+                const resp = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+                if (!resp.ok) throw new Error('Failed');
+                const data = await resp.json();
+                exchangeRates = data.rates;
+                exchangeRatesTimestamp = Date.now();
+                localStorage.setItem(getScopedKey('prismPayExchangeRates'), JSON.stringify(exchangeRates));
+                localStorage.setItem(getScopedKey('prismPayExchangeRatesTs'), String(exchangeRatesTimestamp));
+                updateRatesTimestampDisplay();
+            } catch (e) {
+                // Use cached rates if available
+                console.warn('Could not fetch exchange rates, using cache');
+                updateRatesTimestampDisplay();
+            }
+        }
+
+        function updateRatesTimestampDisplay() {
+            const el = document.getElementById('currencyUpdated');
+            if (!el) return;
+            if (!exchangeRatesTimestamp) {
+                el.textContent = '';
+                return;
+            }
+            const mins = Math.round((Date.now() - exchangeRatesTimestamp) / 60000);
+            if (mins < 1) {
+                el.textContent = 'Rates updated just now';
+            } else if (mins < 60) {
+                el.textContent = `Rates updated ${mins} min${mins > 1 ? 's' : ''} ago`;
+            } else {
+                const hrs = Math.round(mins / 60);
+                el.textContent = `Rates updated ${hrs} hour${hrs > 1 ? 's' : ''} ago`;
+            }
+        }
+
+        function updateCurrencyDisplay() {
+            const info = getCurrencyInfo(selectedCurrency);
+            const flagEl = document.getElementById('currencyCurrentFlag');
+            const labelEl = document.getElementById('currencyCurrentLabel');
+            const codeEl = document.getElementById('currencyCurrentCode');
+            if (flagEl) flagEl.textContent = info.flag;
+            if (labelEl) labelEl.textContent = info.name;
+            if (codeEl) codeEl.textContent = info.code;
+        }
+
+        function renderCurrencyDropdown(filter) {
+            const dropdown = document.getElementById('currencyDropdown');
+            if (!dropdown) return;
+            const query = (filter || '').toLowerCase();
+            const filtered = ALL_CURRENCIES.filter(c => {
+                if (!query) return true;
+                return c.name.toLowerCase().includes(query) ||
+                       c.code.toLowerCase().includes(query) ||
+                       c.flag.includes(query);
+            });
+
+            dropdown.innerHTML = filtered.map(c => `
+                <div class="currency-option ${c.code === selectedCurrency ? 'active' : ''}" data-code="${c.code}">
+                    <span class="cur-flag">${c.flag}</span>
+                    <span class="cur-name">${c.name}</span>
+                    <span class="cur-code">${c.code}</span>
+                </div>
+            `).join('');
+
+            if (filtered.length === 0) {
+                dropdown.innerHTML = '<div class="currency-option" style="color:rgba(255,255,255,0.3);cursor:default;">No currencies found</div>';
+            }
+        }
+
+        function hasExistingData() {
+            return transactions.length > 0 || budget || treatPot || savingsGoals.length > 0;
+        }
+
+        function getExchangeRate(fromCode, toCode) {
+            if (!exchangeRates) return 1;
+            if (fromCode === toCode) return 1;
+            // Rates are based on USD
+            const fromRate = fromCode === 'USD' ? 1 : (exchangeRates[fromCode] || 1);
+            const toRate = toCode === 'USD' ? 1 : (exchangeRates[toCode] || 1);
+            return toRate / fromRate;
+        }
+
+        function convertAllFigures(fromCode, toCode) {
+            const rate = getExchangeRate(fromCode, toCode);
+            if (rate === 1) return;
+
+            // Convert transactions
+            transactions.forEach(t => { t.amount = parseFloat((t.amount * rate).toFixed(2)); });
+            saveTransactions();
+
+            // Convert budget
+            if (budget && budget.amount) {
+                budget.amount = parseFloat((budget.amount * rate).toFixed(2));
+                localStorage.setItem(getScopedKey('prismPayBudget'), JSON.stringify(budget));
+            }
+
+            // Convert treat pot
+            if (treatPot && treatPot.amount) {
+                treatPot.amount = parseFloat((treatPot.amount * rate).toFixed(2));
+                localStorage.setItem(getScopedKey('prismPayTreat'), JSON.stringify(treatPot));
+            }
+
+            // Convert savings goals
+            savingsGoals.forEach(g => {
+                g.target = parseFloat((g.target * rate).toFixed(2));
+                g.saved = parseFloat((g.saved * rate).toFixed(2));
+            });
+            saveSavingsGoals();
+
+            // Convert recurring rules
+            recurringRules.forEach(r => {
+                r.amount = parseFloat((r.amount * rate).toFixed(2));
+            });
+            saveRecurringRules();
+        }
+
+        function applyCurrencyChange(newCode, convert) {
+            const oldCode = selectedCurrency;
+            if (convert && oldCode !== newCode) {
+                convertAllFigures(oldCode, newCode);
+            }
+            selectedCurrency = newCode;
+            saveCurrencySettings();
+            updateCurrencyDisplay();
+            // Re-render everything
+            renderTransactions();
+            updateSummary(false);
+            renderChart();
+            renderBudget();
+            renderTreat();
+            renderHeatmap();
+            renderCouldaBought();
+            renderStreak();
+            renderSavingsGoals();
+            checkWeeklyReport();
+        }
+
+        function showCurrencyModal(newCode) {
+            const oldInfo = getCurrencyInfo(selectedCurrency);
+            const newInfo = getCurrencyInfo(newCode);
+            pendingCurrencyChange = newCode;
+            const textEl = document.getElementById('currencyModalText');
+            textEl.textContent = `You already have data saved in ${oldInfo.name} (${oldInfo.code}). What would you like to do?`;
+            document.getElementById('currencyModalOverlay').classList.add('active');
+        }
+
+        function closeCurrencyModal() {
+            document.getElementById('currencyModalOverlay').classList.remove('active');
+            pendingCurrencyChange = null;
+        }
+
+        function initCurrencySelector() {
+            loadCurrencySettings();
+            updateCurrencyDisplay();
+            fetchExchangeRates();
+
+            const searchInput = document.getElementById('currencySearchInput');
+            const dropdown = document.getElementById('currencyDropdown');
+
+            searchInput.addEventListener('focus', () => {
+                renderCurrencyDropdown(searchInput.value);
+                dropdown.classList.add('open');
+            });
+
+            searchInput.addEventListener('input', () => {
+                renderCurrencyDropdown(searchInput.value);
+                if (!dropdown.classList.contains('open')) dropdown.classList.add('open');
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('.currency-selector-wrap')) {
+                    dropdown.classList.remove('open');
+                }
+            });
+
+            // Select currency from dropdown
+            dropdown.addEventListener('click', (e) => {
+                const opt = e.target.closest('.currency-option');
+                if (!opt || !opt.dataset.code) return;
+                const newCode = opt.dataset.code;
+                if (newCode === selectedCurrency) {
+                    dropdown.classList.remove('open');
+                    searchInput.value = '';
+                    return;
+                }
+
+                dropdown.classList.remove('open');
+                searchInput.value = '';
+
+                if (hasExistingData() && exchangeRates) {
+                    showCurrencyModal(newCode);
+                } else {
+                    applyCurrencyChange(newCode, false);
+                }
+            });
+
+            // Conversion modal buttons
+            document.getElementById('currencyConvertBtn').addEventListener('click', () => {
+                if (pendingCurrencyChange) {
+                    applyCurrencyChange(pendingCurrencyChange, true);
+                }
+                closeCurrencyModal();
+            });
+
+            document.getElementById('currencyKeepBtn').addEventListener('click', () => {
+                if (pendingCurrencyChange) {
+                    applyCurrencyChange(pendingCurrencyChange, false);
+                }
+                closeCurrencyModal();
+            });
+
+            document.getElementById('currencyCancelBtn').addEventListener('click', closeCurrencyModal);
+
+            document.getElementById('currencyModalOverlay').addEventListener('click', (e) => {
+                if (e.target === document.getElementById('currencyModalOverlay')) closeCurrencyModal();
+            });
+        }
+
+        // Initialize on page load â€” no auth required
         function init() {
             // Initialize DOM elements
             transactionsList = document.getElementById('transactionsList');
@@ -5190,7 +5903,7 @@
             quickAddForm = document.getElementById('quickAddForm');
             typeOptions = document.querySelectorAll('.type-option');
 
-            // Load local data (not scoped by user — it's local to this browser)
+            // Load local data (not scoped by user â€” it's local to this browser)
             transactions = JSON.parse(localStorage.getItem(getScopedKey('prismPayTransactions'))) || [];
             recurringRules = JSON.parse(localStorage.getItem(getScopedKey('prismPayRecurring'))) || [];
             budget = JSON.parse(localStorage.getItem(getScopedKey('prismPayBudget'))) || null;
@@ -5226,10 +5939,16 @@
 
             // Notification permission prompt (polite, only if undecided)
             initNotificationPrompt();
+
+            // Currency selector
+            initCurrencySelector();
         }
 
         // Apply saved theme before init so first paint is correct
         initTheme();
+
+        // Load currency before init so symbols are correct on first render
+        loadCurrencySettings();
 
         // Run init immediately
         init();
@@ -5543,7 +6262,7 @@
             if (filteredTransactions.length === 0) {
                 transactionsList.innerHTML = `
                     <div class="empty-state">
-                        <div class="empty-state-icon">💳</div>
+                        <div class="empty-state-icon">ðŸ’³</div>
                         <p>${transactions.length === 0 ? 'No transactions yet. Tap + to add your first!' : 'No transactions match your filters.'}</p>
                     </div>
                 `;
@@ -5565,7 +6284,7 @@
 
                 const categoryTag = transaction.type === 'income' || !transaction.category
                     ? date
-                    : `${transaction.category} • ${date}`;
+                    : `${transaction.category} â€¢ ${date}`;
 
                 const currentReaction = transaction.reaction || '';
                 const reactionDisplay = currentReaction
@@ -5575,7 +6294,7 @@
                 // Receipt thumbnail or attach button
                 const receiptHtml = transaction.receipt
                     ? `<img class="receipt-thumb" src="${transaction.receipt}" alt="Receipt" onclick="openReceiptLightbox('${transaction.id}')" title="View receipt">`
-                    : `<button class="attach-receipt-btn" onclick="triggerReceiptUpload(${transaction.id})" title="Attach receipt">📎</button>`;
+                    : `<button class="attach-receipt-btn" onclick="triggerReceiptUpload(${transaction.id})" title="Attach receipt">ðŸ“Ž</button>`;
 
                 return `
                     <div class="transaction-item">
@@ -5585,24 +6304,24 @@
                         </div>
                         <div class="transaction-right">
                             <div class="transaction-amount ${amountClass}">
-                                ${sign}$${transaction.amount.toFixed(2)}
+                                ${sign}${getCurrencySymbol()}${transaction.amount.toFixed(2)}
                             </div>
                             ${receiptHtml}
                             <div class="reaction-wrapper">
                                 ${reactionDisplay}
                                 <button class="reaction-btn" onclick="toggleReactionPicker(${transaction.id})" title="React">
-                                    ${currentReaction ? '' : '😀'}
+                                    ${currentReaction ? '' : 'ðŸ˜€'}
                                 </button>
                                 <div class="reaction-picker reaction-picker-hidden" id="reactionPicker-${transaction.id}">
-                                    <button onclick="addReaction(${transaction.id}, '&#x1F480;')">💀</button>
-                                    <button onclick="addReaction(${transaction.id}, '&#x1F62D;')">😭</button>
-                                    <button onclick="addReaction(${transaction.id}, '&#x1F440;')">👀</button>
-                                    <button onclick="addReaction(${transaction.id}, '&#x1F911;')">🤑</button>
-                                    <button onclick="addReaction(${transaction.id}, '&#x1F602;')">😂</button>
+                                    <button onclick="addReaction(${transaction.id}, '&#x1F480;')">ðŸ’€</button>
+                                    <button onclick="addReaction(${transaction.id}, '&#x1F62D;')">ðŸ˜­</button>
+                                    <button onclick="addReaction(${transaction.id}, '&#x1F440;')">ðŸ‘€</button>
+                                    <button onclick="addReaction(${transaction.id}, '&#x1F911;')">ðŸ¤‘</button>
+                                    <button onclick="addReaction(${transaction.id}, '&#x1F602;')">ðŸ˜‚</button>
                                 </div>
                             </div>
                             <button class="delete-btn" onclick="deleteTransaction(${transaction.id})">
-                                ×
+                                Ã—
                             </button>
                         </div>
                     </div>
@@ -5611,7 +6330,7 @@
         }
 
         function animateCounter(el, target, duration, prefix) {
-            prefix = prefix || '$';
+            prefix = prefix || getCurrencySymbol();
             const start = performance.now();
             const from = 0;
             function step(now) {
@@ -5642,9 +6361,9 @@
                 animateCounter(totalIncomeEl, income, 1000);
                 animateCounter(totalExpenseEl, expense, 1000);
             } else {
-                totalBalanceEl.textContent = `$${balance.toFixed(2)}`;
-                totalIncomeEl.textContent = `$${income.toFixed(2)}`;
-                totalExpenseEl.textContent = `$${expense.toFixed(2)}`;
+                totalBalanceEl.textContent = `${getCurrencySymbol()}${balance.toFixed(2)}`;
+                totalIncomeEl.textContent = `${getCurrencySymbol()}${income.toFixed(2)}`;
+                totalExpenseEl.textContent = `${getCurrencySymbol()}${expense.toFixed(2)}`;
             }
 
             renderBiggestSplurge();
@@ -5672,30 +6391,30 @@
             const biggest = thisMonthExpenses.reduce((max, t) => t.amount > max.amount ? t : max, thisMonthExpenses[0]);
             const date = new Date(biggest.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 
-            amountEl.textContent = `$${biggest.amount.toFixed(2)}`;
+            amountEl.textContent = `${getCurrencySymbol()}${biggest.amount.toFixed(2)}`;
             detailEl.textContent = `${biggest.category} \u2022 ${date}`;
         }
 
         // ===== "YOU COULD HAVE BOUGHT" =====
         const couldaItems = [
-            { emoji: '🎵', name: 'Spotify subscriptions', price: 10 },
-            { emoji: '🌯', name: 'Chipotle burritos', price: 9 },
-            { emoji: '🎬', name: 'cinema tickets', price: 12 },
-            { emoji: '🚗', name: 'Uber rides', price: 15 },
-            { emoji: '☕', name: 'fancy lattes', price: 5 },
-            { emoji: '🍕', name: 'large pizzas', price: 14 },
-            { emoji: '📚', name: 'paperback books', price: 8 },
-            { emoji: '🎮', name: 'indie games', price: 20 },
-            { emoji: '🍿', name: 'buckets of popcorn', price: 7 },
-            { emoji: '🧁', name: 'cupcakes', price: 4 },
-            { emoji: '🌮', name: 'street tacos', price: 3 },
-            { emoji: '🍩', name: 'dozen donuts', price: 11 },
-            { emoji: '🧋', name: 'bubble teas', price: 6 },
-            { emoji: '🎧', name: 'months of Apple Music', price: 11 },
-            { emoji: '🏋️', name: 'day gym passes', price: 15 },
-            { emoji: '🧀', name: 'fancy cheese wheels', price: 18 },
-            { emoji: '🛁', name: 'bath bombs', price: 7 },
-            { emoji: '🎪', name: 'carnival rides', price: 5 },
+            { emoji: 'ðŸŽµ', name: 'Spotify subscriptions', price: 10 },
+            { emoji: 'ðŸŒ¯', name: 'Chipotle burritos', price: 9 },
+            { emoji: 'ðŸŽ¬', name: 'cinema tickets', price: 12 },
+            { emoji: 'ðŸš—', name: 'Uber rides', price: 15 },
+            { emoji: 'â˜•', name: 'fancy lattes', price: 5 },
+            { emoji: 'ðŸ•', name: 'large pizzas', price: 14 },
+            { emoji: 'ðŸ“š', name: 'paperback books', price: 8 },
+            { emoji: 'ðŸŽ®', name: 'indie games', price: 20 },
+            { emoji: 'ðŸ¿', name: 'buckets of popcorn', price: 7 },
+            { emoji: 'ðŸ§', name: 'cupcakes', price: 4 },
+            { emoji: 'ðŸŒ®', name: 'street tacos', price: 3 },
+            { emoji: 'ðŸ©', name: 'dozen donuts', price: 11 },
+            { emoji: 'ðŸ§‹', name: 'bubble teas', price: 6 },
+            { emoji: 'ðŸŽ§', name: 'months of Apple Music', price: 11 },
+            { emoji: 'ðŸ‹ï¸', name: 'day gym passes', price: 15 },
+            { emoji: 'ðŸ§€', name: 'fancy cheese wheels', price: 18 },
+            { emoji: 'ðŸ›', name: 'bath bombs', price: 7 },
+            { emoji: 'ðŸŽª', name: 'carnival rides', price: 5 },
         ];
         // Pick a random item once per page load
         const couldaPickIndex = Math.floor(Math.random() * couldaItems.length);
@@ -5716,7 +6435,7 @@
             if (monthlySpend <= 0) {
                 valueEl.innerHTML = '<span class="coulda-empty">Add expenses to see what you could\'ve bought!</span>';
                 subEl.textContent = '';
-                iconEl.textContent = '🛒';
+                iconEl.textContent = 'ðŸ›’';
                 return;
             }
 
@@ -5727,10 +6446,10 @@
 
             if (count < 1) {
                 valueEl.innerHTML = `<span class="coulda-emoji">${item.emoji}</span> <span class="coulda-item-name">Not even one ${item.name.replace(/s$/, '')} yet!</span>`;
-                subEl.textContent = `You've spent $${monthlySpend.toFixed(2)} this month — ${item.name} cost $${item.price} each`;
+                subEl.textContent = `You've spent ${getCurrencySymbol()}${monthlySpend.toFixed(2)} this month â€” ${item.name} cost ${getCurrencySymbol()}${item.price} each`;
             } else {
                 valueEl.innerHTML = `<span class="coulda-count">${count}</span> <span class="coulda-item-name">${item.emoji} ${count === 1 ? item.name.replace(/s$/, '') : item.name}</span>`;
-                subEl.textContent = `Based on $${monthlySpend.toFixed(2)} spent this month · $${item.price} each`;
+                subEl.textContent = `Based on ${getCurrencySymbol()}${monthlySpend.toFixed(2)} spent this month Â· ${getCurrencySymbol()}${item.price} each`;
             }
         }
 
@@ -5764,12 +6483,12 @@
 
             // Gradient stops (5 levels: 0%, 25%, 50%, 75%, 100%)
             const gradientStops = [
-                'rgba(255, 255, 255, 0.04)',     // level 0 — empty
+                'rgba(255, 255, 255, 0.04)',     // level 0 â€” empty
                 'rgba(244, 63, 110, 0.2)',       // level 1
                 'rgba(200, 60, 140, 0.4)',       // level 2
                 'rgba(140, 70, 180, 0.6)',       // level 3
                 'rgba(80, 90, 220, 0.8)',        // level 4
-                'rgba(59, 130, 246, 0.95)'       // level 5 — max
+                'rgba(59, 130, 246, 0.95)'       // level 5 â€” max
             ];
 
             function getLevel(amount) {
@@ -5819,7 +6538,7 @@
                     tooltip.className = 'heatmap-tooltip';
                     const dateStr = new Date(year, month, day).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
                     tooltip.innerHTML = spent > 0
-                        ? `<div class="heatmap-tooltip-amount">$${spent.toFixed(2)}</div><div class="heatmap-tooltip-date">${dateStr}</div>`
+                        ? `<div class="heatmap-tooltip-amount">${getCurrencySymbol()}${spent.toFixed(2)}</div><div class="heatmap-tooltip-date">${dateStr}</div>`
                         : `<div style="color: rgba(255,255,255,0.5)">No spending</div><div class="heatmap-tooltip-date">${dateStr}</div>`;
                     cell.appendChild(tooltip);
                 }
@@ -5923,7 +6642,7 @@
                                 label: function(context) {
                                     const total = context.dataset.data.reduce((a, b) => a + b, 0);
                                     const pct = ((context.parsed / total) * 100).toFixed(1);
-                                    return ` $${context.parsed.toFixed(2)} (${pct}%)`;
+                                    return ` ${getCurrencySymbol()}${context.parsed.toFixed(2)} (${pct}%)`;
                                 }
                             }
                         }
@@ -5995,7 +6714,7 @@
             const pct = Math.min((spent / budget.amount) * 100, 100);
             const actualPct = (spent / budget.amount) * 100;
 
-            spentText.innerHTML = `$${spent.toFixed(2)} <span class="budget-of">of $${budget.amount.toFixed(2)}</span>`;
+            spentText.innerHTML = `${getCurrencySymbol()}${spent.toFixed(2)} <span class="budget-of">of ${getCurrencySymbol()}${budget.amount.toFixed(2)}</span>`;
             periodLabel.textContent = `${budget.period.charAt(0).toUpperCase() + budget.period.slice(1)} Budget`;
             percentText.textContent = `${actualPct.toFixed(1)}% used`;
 
@@ -6008,12 +6727,12 @@
                 fill.classList.add('danger');
                 const over = spent - budget.amount;
                 warningEl.className = 'budget-warning over-100';
-                warningEl.innerHTML = `⚠️ You've exceeded your budget by $${over.toFixed(2)}!`;
+                warningEl.innerHTML = `âš ï¸ You've exceeded your budget by ${getCurrencySymbol()}${over.toFixed(2)}!`;
             } else if (actualPct >= 80) {
                 fill.classList.add('warning');
                 const remaining = budget.amount - spent;
                 warningEl.className = 'budget-warning over-80';
-                warningEl.innerHTML = `⚠ Heads up — only $${remaining.toFixed(2)} remaining in your budget.`;
+                warningEl.innerHTML = `âš  Heads up â€” only ${getCurrencySymbol()}${remaining.toFixed(2)} remaining in your budget.`;
             }
 
             // Update the top-of-dashboard warning banner + send notification
@@ -6042,13 +6761,13 @@
                 level = 'danger-level';
                 const over = spent - budget.amount;
                 title = 'Budget Exceeded!';
-                msg = `<strong>${title}</strong> You\u2019ve overspent by <strong>$${over.toFixed(2)}</strong>. Consider pausing non-essential purchases.`;
+                msg = `<strong>${title}</strong> You\u2019ve overspent by <strong>${getCurrencySymbol()}${over.toFixed(2)}</strong>. Consider pausing non-essential purchases.`;
                 icon.textContent = '\ud83d\udea8';
             } else {
                 level = 'warning-level';
                 const remaining = budget.amount - spent;
                 title = 'Approaching Budget Limit';
-                msg = `<strong>${title}</strong> You\u2019ve used <strong>${pct.toFixed(0)}%</strong> of your budget. Only <strong>$${remaining.toFixed(2)}</strong> left.`;
+                msg = `<strong>${title}</strong> You\u2019ve used <strong>${pct.toFixed(0)}%</strong> of your budget. Only <strong>${getCurrencySymbol()}${remaining.toFixed(2)}</strong> left.`;
                 icon.textContent = '\u26a0\ufe0f';
             }
 
@@ -6058,7 +6777,7 @@
                 return;
             }
 
-            // If level changed (e.g. warning → danger), re-show
+            // If level changed (e.g. warning â†’ danger), re-show
             if (budgetBannerDismissedLevel && budgetBannerDismissedLevel !== level) {
                 budgetBannerDismissedLevel = null;
                 sessionStorage.removeItem('prismBannerDismissed');
@@ -6173,7 +6892,7 @@
             const pctClamped = Math.min(pctRaw, 100);
             const left = treatPot.amount - spent;
 
-            label.innerHTML = `<span>$${spent.toFixed(2)}</span> of $${treatPot.amount.toFixed(2)}`;
+            label.innerHTML = `<span>${getCurrencySymbol()}${spent.toFixed(2)}</span> of ${getCurrencySymbol()}${treatPot.amount.toFixed(2)}`;
             fill.style.width = pctClamped + '%';
             percent.textContent = `${pctRaw.toFixed(0)}% used`;
 
@@ -6181,9 +6900,9 @@
             remaining.classList.toggle('over', left < 0);
 
             if (left >= 0) {
-                remaining.textContent = `$${left.toFixed(2)} left to treat yourself 🎉`;
+                remaining.textContent = `${getCurrencySymbol()}${left.toFixed(2)} left to treat yourself ðŸŽ‰`;
             } else {
-                remaining.textContent = `$${Math.abs(left).toFixed(2)} over — but you deserve it 💖`;
+                remaining.textContent = `${getCurrencySymbol()}${Math.abs(left).toFixed(2)} over â€” but you deserve it ðŸ’–`;
             }
         }
 
@@ -6254,7 +6973,7 @@
                 }
             }
 
-            // Now evaluate today so far (tentative — could still change)
+            // Now evaluate today so far (tentative â€” could still change)
             const todaySpent = getSpendingForDate(todayKey);
             if (todaySpent > dailyLimit) {
                 streakData.count = 0;
@@ -6280,8 +6999,8 @@
 
             if (!budget) {
                 card.classList.add('no-budget');
-                flame.textContent = '🔥';
-                countEl.textContent = '—';
+                flame.textContent = 'ðŸ”¥';
+                countEl.textContent = 'â€”';
                 unitEl.textContent = '';
                 msgEl.textContent = 'Set a budget to start tracking your streak';
                 msgEl.classList.remove('broken');
@@ -6297,24 +7016,24 @@
             unitEl.textContent = count === 1 ? 'day streak' : 'day streak';
 
             if (broken && count === 0) {
-                flame.textContent = '💨';
-                msgEl.textContent = `Your streak was reset — you spent over $${dailyLimit.toFixed(2)} today. Tomorrow is a fresh start!`;
+                flame.textContent = 'ðŸ’¨';
+                msgEl.textContent = `Your streak was reset â€” you spent over ${getCurrencySymbol()}${dailyLimit.toFixed(2)} today. Tomorrow is a fresh start!`;
                 msgEl.classList.add('broken');
             } else if (count === 0) {
-                flame.textContent = '🔥';
-                msgEl.textContent = `Stay under $${dailyLimit.toFixed(2)}/day to build your streak`;
+                flame.textContent = 'ðŸ”¥';
+                msgEl.textContent = `Stay under ${getCurrencySymbol()}${dailyLimit.toFixed(2)}/day to build your streak`;
                 msgEl.classList.remove('broken');
             } else if (count < 7) {
-                flame.textContent = '🔥';
-                msgEl.textContent = `Nice! You've stayed under $${dailyLimit.toFixed(2)}/day — keep it going!`;
+                flame.textContent = 'ðŸ”¥';
+                msgEl.textContent = `Nice! You've stayed under ${getCurrencySymbol()}${dailyLimit.toFixed(2)}/day â€” keep it going!`;
                 msgEl.classList.remove('broken');
             } else if (count < 30) {
-                flame.textContent = '🔥';
-                msgEl.textContent = `Impressive! ${count} days of discipline — you're on fire!`;
+                flame.textContent = 'ðŸ”¥';
+                msgEl.textContent = `Impressive! ${count} days of discipline â€” you're on fire!`;
                 msgEl.classList.remove('broken');
             } else {
-                flame.textContent = '🏆';
-                msgEl.textContent = `Legendary! ${count}-day streak — absolute budget master!`;
+                flame.textContent = 'ðŸ†';
+                msgEl.textContent = `Legendary! ${count}-day streak â€” absolute budget master!`;
                 msgEl.classList.remove('broken');
             }
         }
@@ -6394,17 +7113,17 @@
             let html = `
                 <div class="weekly-report-stat">
                     <div class="weekly-report-stat-label">Total Spent</div>
-                    <div class="weekly-report-stat-value">$${totalSpent.toFixed(2)}</div>
+                    <div class="weekly-report-stat-value">${getCurrencySymbol()}${totalSpent.toFixed(2)}</div>
                     <div class="weekly-report-stat-sub">${lastWeekExpenses.length} transaction${lastWeekExpenses.length !== 1 ? 's' : ''}</div>
                 </div>
                 <div class="weekly-report-stat">
                     <div class="weekly-report-stat-label">Top Category</div>
                     <div class="weekly-report-stat-value">${topCategory[0]}</div>
-                    <div class="weekly-report-stat-sub">$${topCategory[1].toFixed(2)}</div>
+                    <div class="weekly-report-stat-sub">${getCurrencySymbol()}${topCategory[1].toFixed(2)}</div>
                 </div>
                 <div class="weekly-report-stat">
                     <div class="weekly-report-stat-label">Biggest Expense</div>
-                    <div class="weekly-report-stat-value">$${biggest.amount.toFixed(2)}</div>
+                    <div class="weekly-report-stat-value">${getCurrencySymbol()}${biggest.amount.toFixed(2)}</div>
                     <div class="weekly-report-stat-sub">${biggest.description}</div>
                 </div>
             `;
@@ -6414,16 +7133,16 @@
                     <div class="weekly-report-stat">
                         <div class="weekly-report-stat-label">vs Budget</div>
                         <div class="weekly-report-stat-value ${budgetStatus.under ? 'under' : 'over'}">
-                            ${budgetStatus.under ? '✓' : '✗'} $${budgetStatus.amount.toFixed(2)} ${budgetStatus.under ? 'under' : 'over'}
+                            ${budgetStatus.under ? 'âœ“' : 'âœ—'} ${getCurrencySymbol()}${budgetStatus.amount.toFixed(2)} ${budgetStatus.under ? 'under' : 'over'}
                         </div>
-                        <div class="weekly-report-stat-sub">of $${budgetStatus.weeklyBudget.toFixed(2)}/wk</div>
+                        <div class="weekly-report-stat-sub">of ${getCurrencySymbol()}${budgetStatus.weeklyBudget.toFixed(2)}/wk</div>
                     </div>
                 `;
             } else {
                 html += `
                     <div class="weekly-report-stat">
                         <div class="weekly-report-stat-label">vs Budget</div>
-                        <div class="weekly-report-stat-value">—</div>
+                        <div class="weekly-report-stat-value">â€”</div>
                         <div class="weekly-report-stat-sub">No budget set</div>
                     </div>
                 `;
@@ -6678,7 +7397,7 @@
             if (pots.length === 0) {
                 list.innerHTML = `
                     <div class="pots-empty" id="potsEmpty">
-                        <div class="pots-empty-icon">🎯</div>
+                        <div class="pots-empty-icon">ðŸŽ¯</div>
                         <p>No group pots yet. Split a bill above!</p>
                     </div>
                 `;
@@ -6692,7 +7411,7 @@
                 const shares = pot.people.map(p => `
                     <div class="pot-share-item">
                         <span class="pot-share-name">${p.name}</span>
-                        <span class="pot-share-amount">$${p.share.toFixed(2)}</span>
+                        <span class="pot-share-amount">${getCurrencySymbol()}${p.share.toFixed(2)}</span>
                     </div>
                 `).join('');
 
@@ -6718,10 +7437,10 @@
                         <div class="pot-item-header">
                             <div>
                                 <div class="pot-item-name">${pot.name}</div>
-                                <div class="pot-item-total">Total: <span>$${pot.total.toFixed(2)}</span> &middot; ${pot.people.length} people &middot; ${date}</div>
+                                <div class="pot-item-total">Total: <span>${getCurrencySymbol()}${pot.total.toFixed(2)}</span> &middot; ${pot.people.length} people &middot; ${date}</div>
                                 <div class="pot-member-badge">${currentUser && pot.ownerUid === currentUser.uid ? 'Owner' : `Shared by ${pot.ownerName || 'a friend'}`}</div>
                             </div>
-                            <button class="pot-delete-btn" onclick="deletePot('${pot.id}')">×</button>
+                            <button class="pot-delete-btn" onclick="deletePot('${pot.id}')">Ã—</button>
                         </div>
                         <div class="pot-shares">${shares}</div>
                         ${settleFooter}
@@ -6849,11 +7568,11 @@
             y += 8;
             doc.setFontSize(11);
             doc.setFont('helvetica', 'normal');
-            doc.text(`Total Income:      $${totalIncome.toFixed(2)}`, 24, y); y += 6;
-            doc.text(`Total Expenses:    $${totalExpense.toFixed(2)}`, 24, y); y += 6;
+            doc.text(`Total Income:      ${getCurrencySymbol()}${totalIncome.toFixed(2)}`, 24, y); y += 6;
+            doc.text(`Total Expenses:    ${getCurrencySymbol()}${totalExpense.toFixed(2)}`, 24, y); y += 6;
             const netLabel = netBalance >= 0 ? '+' : '-';
-            doc.text(`Net Balance:       ${netLabel}$${Math.abs(netBalance).toFixed(2)}`, 24, y); y += 6;
-            doc.text(`Top Category:      ${topCategory ? topCategory[0] + ' ($' + topCategory[1].toFixed(2) + ')' : 'N/A'}`, 24, y); y += 6;
+            doc.text(`Net Balance:       ${netLabel}${getCurrencySymbol()}${Math.abs(netBalance).toFixed(2)}`, 24, y); y += 6;
+            doc.text(`Top Category:      ${topCategory ? topCategory[0] + ' (' + getCurrencySymbol() + topCategory[1].toFixed(2) + ')' : 'N/A'}`, 24, y); y += 6;
             doc.text(`Transactions:      ${monthTx.length}`, 24, y);
             y += 12;
             doc.line(20, y, 190, y);
@@ -6895,7 +7614,7 @@
                 doc.text((t.category || '-').substring(0, 16), 112, y);
                 doc.text(t.type, 145, y);
                 const sign = t.type === 'income' ? '+' : '-';
-                doc.text(`${sign}$${t.amount.toFixed(2)}`, 168, y);
+                doc.text(`${sign}${getCurrencySymbol()}${t.amount.toFixed(2)}`, 168, y);
                 y += 7;
             });
 
@@ -7005,8 +7724,8 @@
 
             if (gapDays >= INACTIVITY_DAYS) {
                 nudgeText.innerHTML = gapDays >= 7
-                    ? `It's been <strong>${gapDays} days</strong> since your last entry — don't lose track! 👀`
-                    : `You haven't logged anything in <strong>${gapDays} days</strong> — don't fall behind! 👀`;
+                    ? `It's been <strong>${gapDays} days</strong> since your last entry â€” don't lose track! ðŸ‘€`
+                    : `You haven't logged anything in <strong>${gapDays} days</strong> â€” don't fall behind! ðŸ‘€`;
                 nudgeEl.classList.add('visible');
             } else {
                 nudgeEl.classList.remove('visible');
@@ -7130,7 +7849,7 @@
 
         function addCustomCategory(emoji, name) {
             const trimName = name.trim();
-            const trimEmoji = emoji.trim() || '🏷️';
+            const trimEmoji = emoji.trim() || 'ðŸ·ï¸';
             if (!trimName) return;
             const all = getAllCategories();
             if (all.some(c => c.name.toLowerCase() === trimName.toLowerCase())) return;
@@ -7291,7 +8010,7 @@
             const empty = document.getElementById('goalsEmpty');
             if (!list) return;
 
-            const currencySymbol = '£';
+            const currencySymbol = getCurrencySymbol();
 
             if (savingsGoals.length === 0) {
                 list.innerHTML = '';
@@ -7311,7 +8030,7 @@
                 if (goal.deadline) {
                     const dl = new Date(goal.deadline);
                     const opts = { month: 'short', day: 'numeric', year: 'numeric' };
-                    deadlineLabel = `📅 ${dl.toLocaleDateString(undefined, opts)}`;
+                    deadlineLabel = `ðŸ“… ${dl.toLocaleDateString(undefined, opts)}`;
                 }
 
                 html += `
@@ -7319,7 +8038,7 @@
                     <div class="goal-card-header">
                         <span class="goal-card-name">${escapeHTML(goal.name)}</span>
                         <div class="goal-card-actions">
-                            <button class="goal-delete-btn" onclick="deleteSavingsGoal('${goal.id}')" title="Delete goal">✕</button>
+                            <button class="goal-delete-btn" onclick="deleteSavingsGoal('${goal.id}')" title="Delete goal">âœ•</button>
                         </div>
                     </div>
                     <div class="goal-amounts">
@@ -7331,7 +8050,7 @@
                     </div>
                     <div class="goal-meta">
                         <span class="goal-remaining ${isComplete ? 'complete' : ''}">
-                            ${isComplete ? '✅ Goal reached!' : `${currencySymbol}${remaining.toFixed(2)} remaining`}
+                            ${isComplete ? 'âœ… Goal reached!' : `${currencySymbol}${remaining.toFixed(2)} remaining`}
                         </span>
                         ${deadlineLabel ? `<span class="goal-deadline-label">${deadlineLabel}</span>` : ''}
                         ${weeklyPace !== null && !isComplete ? `<span class="goal-weekly-pace">${currencySymbol}${weeklyPace.toFixed(2)}/week needed</span>` : ''}

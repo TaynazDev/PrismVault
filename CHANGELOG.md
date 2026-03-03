@@ -2,6 +2,30 @@
 
 All notable changes to Prism Vault will be documented in this file.
 
+## [1.20.0] - 2026-03-03
+
+### 💱 Currency Selector & Multi-Currency Support
+
+#### Added
+- Full currency selector in Settings with 140+ world currencies, precious metals (XAU, XAG, XPT, XPD), and crypto (BTC, ETH)
+- Searchable dropdown with flag emoji, currency name, and code for every entry
+- Live exchange rates fetched from ExchangeRate-API (free tier, USD-based)
+- Cached rates with timestamp display ("Rates updated X mins/hours ago")
+- Conversion modal when switching currencies on existing data — choose "Convert my figures" (applies exchange rate to all amounts) or "Keep my figures" (symbol-only swap)
+- Converts transactions, budget, treat pot, savings goals, and recurring rules when converting
+- Browser locale auto-detection via `Intl.NumberFormat` to set sensible default currency
+- `getCurrencySymbol()` used across the entire app — all hardcoded `$` signs replaced
+- Currency preference persisted in localStorage (`prismPayCurrency`)
+- Dark glassmorphism styling matching the app aesthetic for selector, dropdown, and modal
+
+### 🎨 Logo Update
+
+#### Changed
+- Navbar logo updated from prism triangle to gradient circle with bold `$` dollar sign
+- Logo gradient adapts to active theme via `logoGradStop1` / `logoGradStop2` IDs
+
+---
+
 ## [1.19.0] - 2026-03-03
 
 ### 📐 Layout Consistency & Content Container
