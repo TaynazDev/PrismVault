@@ -2,6 +2,28 @@
 
 All notable changes to Prism Vault will be documented in this file.
 
+## [2.0.5] - 2026-03-03
+
+### 💱 Currency Selector — Rebuilt from Scratch
+
+#### Fixed
+- Removed the entire broken currency implementation and rebuilt it from the ground up
+- Currency selector now works reliably with searchable dropdown, live exchange rates, and correct symbol display everywhere
+
+#### Changed
+- Exchange rates fetched on page load from `https://api.exchangerate-api.com/v4/latest/USD` and cached in localStorage (`pv_exchange_rates` / `pv_rates_timestamp`)
+- Settings panel now shows "Rates live" (green dot) or "Using cached rates" (amber dot) instead of a vague timestamp
+- localStorage keys changed to `pv_currency_code` and `pv_currency_symbol` (old scoped keys removed)
+- Conversion modal reworded: "You have existing transactions in [OLD CODE]. What would you like to do?" with two clear buttons — "Convert figures" and "Keep figures" (removed Cancel button)
+- Auto-detects user's local currency on first load via `Intl.NumberFormat().resolvedOptions().locale`
+- Expanded region-to-currency detection map (80+ regions)
+- `getCurrencySymbol()` API preserved — all 41+ call sites across the app continue to display the correct symbol (balance, transactions, budget, progress bars, goals, group pots, charts, coulda-bought, PDF export, etc.)
+- Modal uses enhanced glassmorphism styling (`backdrop-filter: blur(32px)`)
+- ILS (Israeli Shekel) excluded from the currency list
+- Full world currency list retained: 150+ fiat currencies, XAU/XAG/XPT/XPD (precious metals), BTC/ETH (crypto)
+
+---
+
 ## [2.0.0] - 2026-03-03
 
 ### 📐 Layout Structure Overhaul
