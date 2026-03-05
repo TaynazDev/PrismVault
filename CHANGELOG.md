@@ -2,6 +2,20 @@
 
 All notable changes to Prism Vault will be documented in this file.
 
+## [2.1.1] - 2026-03-05
+
+### 🔐 Firebase Sign-In — Full Repair
+
+#### Fixed
+- **Broken error messages on wrong credentials** — Firebase Auth SDK v10.x deprecated `auth/user-not-found` and `auth/wrong-password` and replaced them with the unified `auth/invalid-credential` code. Sign-in errors were silently falling through to the raw SDK message string. All four variants (`invalid-credential`, `invalid-login-credentials`, `user-not-found`, `wrong-password`) now map to "Incorrect email or password"
+- **Additional error codes wired up**: `auth/too-many-requests` → "Too many failed attempts — please try again later"; `auth/network-request-failed` → "Network error — check your connection"; `auth/operation-not-allowed` → "Email/password sign-in is not enabled"
+- **`pv_user_uid` and `pv_user_name` never saved** — sign-in and sign-up flows now write both keys to `localStorage` alongside the existing `prismPayUser` JSON object
+- **Sign-out didn't clear new keys** — `auth.signOut()` handler now removes `pv_user_uid` and `pv_user_name` as well as `prismPayUser`
+- **`onAuthStateChanged` fallback reads updated** — both Firestore-miss and network-error fallback branches now prefer `pv_user_name` over the stale `prismPayUser.name` field
+- **Profile save didn't update new keys** — `profileSaveBtn` handler now also writes `pv_user_uid` and `pv_user_name` after updating `prismPayUser`
+
+---
+
 ## [2.1.0] - 2026-03-05
 
 ### 📊 Budget — Include Recurring Payments Toggle
