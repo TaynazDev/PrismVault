@@ -4505,6 +4505,117 @@
                 padding: 12px 8px;
             }
         }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           TONE DOWN COLOURS ROW (in theme-picker-section)
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+        .tone-down-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 20px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255, 255, 255, 0.07);
+        }
+        .tone-down-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .tone-down-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.85);
+        }
+        .tone-down-desc {
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.38);
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           TONE DOWN COLOURS MODE  —  [data-tone="down"]
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+        /* Ghost buttons: dark bg + accent border + accent-coloured text */
+        [data-tone="down"] .btn,
+        [data-tone="down"] .auth-btn,
+        [data-tone="down"] .header-sign-in-btn,
+        [data-tone="down"] .profile-save-btn,
+        [data-tone="down"] .budget-setup .btn-sm,
+        [data-tone="down"] .treat-setup .btn-sm,
+        [data-tone="down"] .pots-auth-gate .btn-sm,
+        [data-tone="down"] .currency-modal-btn.convert {
+            background: rgba(255, 255, 255, 0.04) !important;
+            border: 1.5px solid rgba(var(--accent-1-rgb), 0.5) !important;
+            box-shadow: none !important;
+            color: var(--accent-1) !important;
+            -webkit-text-fill-color: var(--accent-1) !important;
+        }
+        [data-tone="down"] .btn:hover,
+        [data-tone="down"] .auth-btn:hover,
+        [data-tone="down"] .header-sign-in-btn:hover,
+        [data-tone="down"] .profile-save-btn:hover,
+        [data-tone="down"] .budget-setup .btn-sm:hover,
+        [data-tone="down"] .treat-setup .btn-sm:hover,
+        [data-tone="down"] .pots-auth-gate .btn-sm:hover,
+        [data-tone="down"] .currency-modal-btn.convert:hover {
+            box-shadow: none !important;
+            border-color: rgba(var(--accent-2-rgb), 0.65) !important;
+        }
+
+        /* Progress bars: reduce opacity to 0.6 (skip warning/danger/over states) */
+        [data-tone="down"] .progress-fill:not(.warning):not(.danger),
+        [data-tone="down"] .treat-progress-fill:not(.over),
+        [data-tone="down"] .goal-progress-fill:not(.complete) {
+            opacity: 0.6;
+        }
+
+        /* Card borders: reduce accent glow on hover */
+        [data-tone="down"] .glass-card:hover {
+            border-color: rgba(var(--accent-1-rgb), 0.08) !important;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+                        0 0 20px rgba(var(--accent-1-rgb), 0.03),
+                        0 0 40px rgba(var(--accent-2-rgb), 0.02) !important;
+        }
+
+        /* Gradient text → plain white */
+        [data-tone="down"] .auth-logo,
+        [data-tone="down"] .profile-card h2,
+        [data-tone="down"] .stat-card.balance-card .stat-value,
+        [data-tone="down"] .weekly-report-title-text {
+            background: none !important;
+            -webkit-background-clip: unset !important;
+            background-clip: unset !important;
+            -webkit-text-fill-color: #ffffff !important;
+            color: #ffffff !important;
+        }
+
+        /* Streak: orange → muted purple #a78bfa */
+        [data-tone="down"] .streak-card::before,
+        [data-tone="down"] .weekly-report::before {
+            background: #a78bfa !important;
+        }
+        [data-tone="down"] .streak-count {
+            background: none !important;
+            -webkit-background-clip: unset !important;
+            background-clip: unset !important;
+            -webkit-text-fill-color: #a78bfa !important;
+            color: #a78bfa !important;
+        }
+        [data-tone="down"] .streak-flame {
+            background: rgba(167, 139, 250, 0.12) !important;
+        }
+        [data-tone="down"] .streak-card:hover {
+            border-color: rgba(167, 139, 250, 0.18) !important;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35),
+                        0 0 24px rgba(167, 139, 250, 0.06) !important;
+        }
+
+        /* Tone-down toggle itself: muted purple when ON */
+        [data-tone="down"] #toneDownToggle:checked + .toggle-slider {
+            background: #a78bfa !important;
+        }
     </style>
 </head>
 <body>
@@ -5041,6 +5152,18 @@
                     <span class="theme-label">Green &amp; Teal</span>
                 </div>
             </div>
+
+            <!-- Tone Down Colours toggle -->
+            <div class="tone-down-row">
+                <div class="tone-down-info">
+                    <span class="tone-down-label">Tone Down Colours</span>
+                    <span class="tone-down-desc">Keep the vibe, just softer</span>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="toneDownToggle">
+                    <span class="toggle-slider"></span>
+                </label>
+            </div>
         </div>
 
         <!-- Currency Selector -->
@@ -5403,6 +5526,12 @@
         });
 
         // ===== THEME PICKER EVENT LISTENER =====
+        // Tone Down Colours toggle
+        const toneDownToggle = document.getElementById('toneDownToggle');
+        if (toneDownToggle) {
+            toneDownToggle.addEventListener('change', (e) => applyToneDown(e.target.checked));
+        }
+
         document.getElementById('themeGrid').addEventListener('click', (e) => {
             const option = e.target.closest('.theme-option');
             if (!option) return;
@@ -5504,6 +5633,7 @@
         let customCategories = [];
         let savingsGoals = [];
         let includeRecurring = false;
+        let toneDownActive = false;
 
         // Default categories (cannot be deleted)
         const defaultCategories = [
@@ -5535,9 +5665,22 @@
             'green-teal': ['#22c55e', '#14b8a6']
         };
 
+        function desaturateHex(hex, amount) {
+            const r = parseInt(hex.slice(1, 3), 16);
+            const g = parseInt(hex.slice(3, 5), 16);
+            const b = parseInt(hex.slice(5, 7), 16);
+            const gray = Math.round(0.299 * r + 0.587 * g + 0.114 * b);
+            const nr = Math.round(r + (gray - r) * amount);
+            const ng = Math.round(g + (gray - g) * amount);
+            const nb = Math.round(b + (gray - b) * amount);
+            return '#' + nr.toString(16).padStart(2, '0') + ng.toString(16).padStart(2, '0') + nb.toString(16).padStart(2, '0');
+        }
+
         function getChartColors() {
             const t = document.documentElement.getAttribute('data-theme') || 'default';
-            return themeChartColors[t] || themeChartColors['default'];
+            const colors = themeChartColors[t] || themeChartColors['default'];
+            if (toneDownActive) return colors.map(c => desaturateHex(c, 0.4));
+            return colors;
         }
 
         // ===== THEME MANAGEMENT =====
@@ -5566,6 +5709,26 @@
         function initTheme() {
             const saved = localStorage.getItem('prismPayTheme') || 'default';
             applyTheme(saved);
+        }
+
+        function applyToneDown(on) {
+            toneDownActive = on;
+            if (on) {
+                document.documentElement.setAttribute('data-tone', 'down');
+            } else {
+                document.documentElement.removeAttribute('data-tone');
+            }
+            localStorage.setItem('pv_tone_down_colours', on.toString());
+            // Re-render chart so segment colours update
+            if (typeof spendingChart !== 'undefined' && spendingChart) renderChart();
+            // Sync toggle checkbox state
+            const toggle = document.getElementById('toneDownToggle');
+            if (toggle) toggle.checked = on;
+        }
+
+        function initToneDown() {
+            const saved = localStorage.getItem('pv_tone_down_colours') === 'true';
+            applyToneDown(saved);
         }
 
         // ===== CURRENCY SYSTEM (rebuilt v2.0.5) =====
@@ -6100,6 +6263,9 @@
 
         // Apply saved theme before init so first paint is correct
         initTheme();
+
+        // Apply tone-down mode before init so first paint reflects the saved preference
+        initToneDown();
 
         // Load currency before init so symbols are correct on first render
         loadCurrencySettings();
