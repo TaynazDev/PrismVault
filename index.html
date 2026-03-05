@@ -49,6 +49,40 @@
             --accent-1-light: #4ade80;
         }
 
+        /* Muted variants — same accent CSS vars, visual overrides applied below */
+        [data-theme="muted-classic"] {
+            --accent-1: #f43f6e;
+            --accent-2: #3b82f6;
+            --accent-1-rgb: 244, 63, 110;
+            --accent-2-rgb: 59, 130, 246;
+            --accent-mid: #8b5cf6;
+            --accent-mid-rgb: 139, 92, 246;
+            --accent-1-mid: #ec4899;
+            --accent-1-light: #f472b6;
+        }
+
+        [data-theme="muted-prismatic"] {
+            --accent-1: #a855f7;
+            --accent-2: #06b6d4;
+            --accent-1-rgb: 168, 85, 247;
+            --accent-2-rgb: 6, 182, 212;
+            --accent-mid: #6366f1;
+            --accent-mid-rgb: 99, 102, 241;
+            --accent-1-mid: #c084fc;
+            --accent-1-light: #d8b4fe;
+        }
+
+        [data-theme="muted-legality"] {
+            --accent-1: #22c55e;
+            --accent-2: #14b8a6;
+            --accent-1-rgb: 34, 197, 94;
+            --accent-2-rgb: 20, 184, 166;
+            --accent-mid: #0d9488;
+            --accent-mid-rgb: 13, 148, 136;
+            --accent-1-mid: #34d399;
+            --accent-1-light: #4ade80;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -4417,24 +4451,25 @@
             color: rgba(255, 255, 255, 0.9);
         }
 
+        /* ===== THEME PICKER GRID (2-col × 3-row) ===== */
         .theme-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
         }
 
         .theme-option {
             background: rgba(255, 255, 255, 0.04);
             border: 2px solid rgba(255, 255, 255, 0.08);
             border-radius: 14px;
-            padding: 16px 12px;
+            padding: 13px 10px 11px;
             cursor: pointer;
-            transition: all 0.3s ease;
-            text-align: center;
+            transition: all 0.25s ease;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
+            text-align: center;
         }
 
         .theme-option:hover {
@@ -4443,50 +4478,40 @@
         }
 
         .theme-option.active {
-            border-color: var(--accent-1);
+            border-color: rgba(var(--accent-1-rgb), 0.7);
             background: rgba(var(--accent-1-rgb), 0.1);
-            box-shadow: 0 0 20px rgba(var(--accent-1-rgb), 0.15);
+            box-shadow: 0 0 16px rgba(var(--accent-1-rgb), 0.12);
         }
 
-        .theme-swatch {
-            width: 48px;
-            height: 48px;
+        /* Preview strip inside each card */
+        .theme-preview {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Small fake button chip */
+        .theme-preview-btn {
+            width: 34px;
+            height: 13px;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        /* Small colour swatch circle */
+        .theme-preview-dot {
+            width: 13px;
+            height: 13px;
             border-radius: 50%;
-            position: relative;
-            overflow: hidden;
+            flex-shrink: 0;
         }
-
-        .theme-swatch::before,
-        .theme-swatch::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            width: 50%;
-            height: 100%;
-        }
-
-        .theme-swatch::before {
-            left: 0;
-            border-radius: 50% 0 0 50%;
-        }
-
-        .theme-swatch::after {
-            right: 0;
-            border-radius: 0 50% 50% 0;
-        }
-
-        .theme-swatch.swatch-default::before { background: #f43f6e; }
-        .theme-swatch.swatch-default::after { background: #3b82f6; }
-        .theme-swatch.swatch-purple-cyan::before { background: #a855f7; }
-        .theme-swatch.swatch-purple-cyan::after { background: #06b6d4; }
-        .theme-swatch.swatch-green-teal::before { background: #22c55e; }
-        .theme-swatch.swatch-green-teal::after { background: #14b8a6; }
 
         .theme-label {
-            font-size: 12px;
+            font-size: 11px;
             font-weight: 500;
-            color: rgba(255, 255, 255, 0.6);
-            letter-spacing: 0.3px;
+            color: rgba(255, 255, 255, 0.55);
+            letter-spacing: 0.2px;
+            white-space: nowrap;
         }
 
         .theme-option.active .theme-label {
@@ -4494,16 +4519,10 @@
         }
 
         @media (max-width: 480px) {
-            .theme-grid {
-                gap: 8px;
-            }
-            .theme-swatch {
-                width: 36px;
-                height: 36px;
-            }
-            .theme-option {
-                padding: 12px 8px;
-            }
+            .theme-grid { gap: 8px; }
+            .theme-preview-btn { width: 28px; height: 11px; }
+            .theme-preview-dot { width: 11px; height: 11px; }
+            .theme-option { padding: 11px 8px 9px; }
         }
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -4535,9 +4554,10 @@
 
         /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
            TONE DOWN COLOURS MODE  —  [data-tone="down"]
+           (values ~30% more reduced vs v2.1.2)
            ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
 
-        /* Ghost buttons: dark bg + accent border + accent-coloured text */
+        /* Ghost buttons: very transparent bg + faint accent border */
         [data-tone="down"] .btn,
         [data-tone="down"] .auth-btn,
         [data-tone="down"] .header-sign-in-btn,
@@ -4546,8 +4566,8 @@
         [data-tone="down"] .treat-setup .btn-sm,
         [data-tone="down"] .pots-auth-gate .btn-sm,
         [data-tone="down"] .currency-modal-btn.convert {
-            background: rgba(255, 255, 255, 0.04) !important;
-            border: 1.5px solid rgba(var(--accent-1-rgb), 0.5) !important;
+            background: rgba(255, 255, 255, 0.02) !important;
+            border: 1.5px solid rgba(var(--accent-1-rgb), 0.32) !important;
             box-shadow: none !important;
             color: var(--accent-1) !important;
             -webkit-text-fill-color: var(--accent-1) !important;
@@ -4561,22 +4581,22 @@
         [data-tone="down"] .pots-auth-gate .btn-sm:hover,
         [data-tone="down"] .currency-modal-btn.convert:hover {
             box-shadow: none !important;
-            border-color: rgba(var(--accent-2-rgb), 0.65) !important;
+            border-color: rgba(var(--accent-2-rgb), 0.42) !important;
         }
 
-        /* Progress bars: reduce opacity to 0.6 (skip warning/danger/over states) */
+        /* Progress bars: 40% opacity (was 60%) */
         [data-tone="down"] .progress-fill:not(.warning):not(.danger),
         [data-tone="down"] .treat-progress-fill:not(.over),
         [data-tone="down"] .goal-progress-fill:not(.complete) {
-            opacity: 0.6;
+            opacity: 0.40;
         }
 
-        /* Card borders: reduce accent glow on hover */
+        /* Card borders: minimal accent presence on hover */
         [data-tone="down"] .glass-card:hover {
-            border-color: rgba(var(--accent-1-rgb), 0.08) !important;
+            border-color: rgba(var(--accent-1-rgb), 0.05) !important;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
-                        0 0 20px rgba(var(--accent-1-rgb), 0.03),
-                        0 0 40px rgba(var(--accent-2-rgb), 0.02) !important;
+                        0 0 20px rgba(var(--accent-1-rgb), 0.02),
+                        0 0 40px rgba(var(--accent-2-rgb), 0.01) !important;
         }
 
         /* Gradient text → plain white */
@@ -4591,30 +4611,169 @@
             color: #ffffff !important;
         }
 
-        /* Streak: orange → muted purple #a78bfa */
+        /* Streak: warm tones → desaturated purple-grey */
         [data-tone="down"] .streak-card::before,
         [data-tone="down"] .weekly-report::before {
-            background: #a78bfa !important;
+            background: #8f85c4 !important;
         }
         [data-tone="down"] .streak-count {
             background: none !important;
             -webkit-background-clip: unset !important;
             background-clip: unset !important;
-            -webkit-text-fill-color: #a78bfa !important;
-            color: #a78bfa !important;
+            -webkit-text-fill-color: #8f85c4 !important;
+            color: #8f85c4 !important;
         }
         [data-tone="down"] .streak-flame {
-            background: rgba(167, 139, 250, 0.12) !important;
+            background: rgba(143, 133, 196, 0.07) !important;
         }
         [data-tone="down"] .streak-card:hover {
-            border-color: rgba(167, 139, 250, 0.18) !important;
+            border-color: rgba(143, 133, 196, 0.11) !important;
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35),
-                        0 0 24px rgba(167, 139, 250, 0.06) !important;
+                        0 0 24px rgba(143, 133, 196, 0.04) !important;
         }
 
-        /* Tone-down toggle itself: muted purple when ON */
+        /* Tone-down toggle when ON: desaturated purple-grey */
         [data-tone="down"] #toneDownToggle:checked + .toggle-slider {
-            background: #a78bfa !important;
+            background: #8f85c4 !important;
+        }
+
+        /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+           MUTED THEMES  —  [data-theme^="muted"]
+           ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+
+        /* Flat black background, kill the animated gradient wash */
+        [data-theme^="muted"] body {
+            background: #0d0d0d;
+        }
+        [data-theme^="muted"] body::before {
+            display: none;
+        }
+
+        /* Minimal cards: near-invisible bg, hairline border */
+        [data-theme^="muted"] .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+        }
+        [data-theme^="muted"] .glass-card:hover {
+            border-color: rgba(255, 255, 255, 0.1) !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+        }
+
+        /* Flat grey buttons */
+        [data-theme^="muted"] .btn,
+        [data-theme^="muted"] .auth-btn,
+        [data-theme^="muted"] .header-sign-in-btn,
+        [data-theme^="muted"] .profile-save-btn,
+        [data-theme^="muted"] .budget-setup .btn-sm,
+        [data-theme^="muted"] .treat-setup .btn-sm,
+        [data-theme^="muted"] .pots-auth-gate .btn-sm,
+        [data-theme^="muted"] .currency-modal-btn.convert {
+            background: #2a2a2a !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            box-shadow: none !important;
+            color: rgba(255, 255, 255, 0.85) !important;
+            -webkit-text-fill-color: rgba(255, 255, 255, 0.85) !important;
+        }
+        [data-theme^="muted"] .btn:hover,
+        [data-theme^="muted"] .auth-btn:hover,
+        [data-theme^="muted"] .header-sign-in-btn:hover,
+        [data-theme^="muted"] .profile-save-btn:hover,
+        [data-theme^="muted"] .budget-setup .btn-sm:hover,
+        [data-theme^="muted"] .treat-setup .btn-sm:hover,
+        [data-theme^="muted"] .pots-auth-gate .btn-sm:hover,
+        [data-theme^="muted"] .currency-modal-btn.convert:hover {
+            background: #333333 !important;
+            box-shadow: none !important;
+            border-color: rgba(255, 255, 255, 0.15) !important;
+        }
+
+        /* Progress bars: low-opacity theme fill on grey track */
+        [data-theme^="muted"] .progress-fill:not(.warning):not(.danger),
+        [data-theme^="muted"] .treat-progress-fill:not(.over),
+        [data-theme^="muted"] .goal-progress-fill:not(.complete) {
+            opacity: 0.5;
+        }
+
+        /* All gradient text → plain white (including Prism logo text) */
+        [data-theme^="muted"] .auth-logo,
+        [data-theme^="muted"] .profile-card h2,
+        [data-theme^="muted"] .stat-card.balance-card .stat-value,
+        [data-theme^="muted"] .weekly-report-title-text,
+        [data-theme^="muted"] .navbar-logo-text .prism {
+            background: none !important;
+            -webkit-background-clip: unset !important;
+            background-clip: unset !important;
+            -webkit-text-fill-color: #ffffff !important;
+            color: #ffffff !important;
+        }
+
+        /* Streak accents: colour stripped out */
+        [data-theme^="muted"] .streak-card::before,
+        [data-theme^="muted"] .weekly-report::before {
+            background: rgba(255, 255, 255, 0.07) !important;
+        }
+        [data-theme^="muted"] .streak-count {
+            background: none !important;
+            -webkit-background-clip: unset !important;
+            background-clip: unset !important;
+            -webkit-text-fill-color: rgba(255, 255, 255, 0.65) !important;
+            color: rgba(255, 255, 255, 0.65) !important;
+        }
+        [data-theme^="muted"] .streak-flame {
+            background: rgba(255, 255, 255, 0.06) !important;
+        }
+        [data-theme^="muted"] .streak-card:hover {
+            border-color: rgba(255, 255, 255, 0.1) !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+        }
+
+        /* Active toggle on muted themes: retain accent colour at reduced opacity */
+        [data-theme^="muted"] .toggle-switch input:checked + .toggle-slider {
+            background: rgba(var(--accent-1-rgb), 0.65) !important;
+        }
+
+        /* Tone-down toggle itself on muted themes: even quieter */
+        [data-theme^="muted"][data-tone="down"] #toneDownToggle:checked + .toggle-slider {
+            background: rgba(100, 94, 140, 0.8) !important;
+        }
+
+        /* Active theme-option card inside muted mode */
+        [data-theme^="muted"] .theme-option {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(255, 255, 255, 0.07);
+        }
+        [data-theme^="muted"] .theme-option:hover {
+            background: rgba(255, 255, 255, 0.06);
+        }
+        [data-theme^="muted"] .theme-option.active {
+            border-color: rgba(var(--accent-1-rgb), 0.45) !important;
+            background: rgba(var(--accent-1-rgb), 0.06);
+            box-shadow: 0 0 10px rgba(var(--accent-1-rgb), 0.07);
+        }
+
+        /* Muted + tone-down: mutual amplification */
+        [data-theme^="muted"][data-tone="down"] .progress-fill:not(.warning):not(.danger),
+        [data-theme^="muted"][data-tone="down"] .treat-progress-fill:not(.over),
+        [data-theme^="muted"][data-tone="down"] .goal-progress-fill:not(.complete) {
+            opacity: 0.28;
+        }
+        [data-theme^="muted"][data-tone="down"] .btn,
+        [data-theme^="muted"][data-tone="down"] .auth-btn,
+        [data-theme^="muted"][data-tone="down"] .header-sign-in-btn,
+        [data-theme^="muted"][data-tone="down"] .profile-save-btn,
+        [data-theme^="muted"][data-tone="down"] .budget-setup .btn-sm,
+        [data-theme^="muted"][data-tone="down"] .treat-setup .btn-sm,
+        [data-theme^="muted"][data-tone="down"] .pots-auth-gate .btn-sm,
+        [data-theme^="muted"][data-tone="down"] .currency-modal-btn.convert {
+            background: #1e1e1e !important;
+            border: 1px solid rgba(255, 255, 255, 0.07) !important;
+            color: rgba(255, 255, 255, 0.55) !important;
+            -webkit-text-fill-color: rgba(255, 255, 255, 0.55) !important;
+        }
+        [data-theme^="muted"][data-tone="down"] .glass-card {
+            background: rgba(255, 255, 255, 0.02);
+            border-color: rgba(255, 255, 255, 0.04);
         }
     </style>
 </head>
@@ -5139,18 +5298,55 @@
         <div class="glass-card theme-picker-section">
             <h2>🎨 Theme</h2>
             <div class="theme-grid" id="themeGrid">
+
+                <!-- Row 1: Classic pair -->
                 <div class="theme-option active" data-theme="default">
-                    <div class="theme-swatch swatch-default"></div>
-                    <span class="theme-label">Rose &amp; Blue</span>
+                    <div class="theme-preview">
+                        <div class="theme-preview-btn" style="background: linear-gradient(135deg, #f43f6e, #3b82f6);"></div>
+                        <div class="theme-preview-dot" style="background: linear-gradient(135deg, #f43f6e 50%, #3b82f6 50%);"></div>
+                    </div>
+                    <span class="theme-label">Classic</span>
                 </div>
+                <div class="theme-option" data-theme="muted-classic">
+                    <div class="theme-preview">
+                        <div class="theme-preview-btn" style="background: #2a2a2a; border: 1px solid rgba(255,255,255,0.12);"></div>
+                        <div class="theme-preview-dot" style="background: #3a3a3a;"></div>
+                    </div>
+                    <span class="theme-label">Muted Classic</span>
+                </div>
+
+                <!-- Row 2: Prismatic pair -->
                 <div class="theme-option" data-theme="purple-cyan">
-                    <div class="theme-swatch swatch-purple-cyan"></div>
-                    <span class="theme-label">Purple &amp; Cyan</span>
+                    <div class="theme-preview">
+                        <div class="theme-preview-btn" style="background: linear-gradient(135deg, #a855f7, #06b6d4);"></div>
+                        <div class="theme-preview-dot" style="background: linear-gradient(135deg, #a855f7 50%, #06b6d4 50%);"></div>
+                    </div>
+                    <span class="theme-label">Prismatic</span>
                 </div>
+                <div class="theme-option" data-theme="muted-prismatic">
+                    <div class="theme-preview">
+                        <div class="theme-preview-btn" style="background: #2a2a2a; border: 1px solid rgba(255,255,255,0.12);"></div>
+                        <div class="theme-preview-dot" style="background: #3a3a3a;"></div>
+                    </div>
+                    <span class="theme-label">Muted Prismatic</span>
+                </div>
+
+                <!-- Row 3: Legality pair -->
                 <div class="theme-option" data-theme="green-teal">
-                    <div class="theme-swatch swatch-green-teal"></div>
-                    <span class="theme-label">Green &amp; Teal</span>
+                    <div class="theme-preview">
+                        <div class="theme-preview-btn" style="background: linear-gradient(135deg, #22c55e, #14b8a6);"></div>
+                        <div class="theme-preview-dot" style="background: linear-gradient(135deg, #22c55e 50%, #14b8a6 50%);"></div>
+                    </div>
+                    <span class="theme-label">Legality</span>
                 </div>
+                <div class="theme-option" data-theme="muted-legality">
+                    <div class="theme-preview">
+                        <div class="theme-preview-btn" style="background: #2a2a2a; border: 1px solid rgba(255,255,255,0.12);"></div>
+                        <div class="theme-preview-dot" style="background: #3a3a3a;"></div>
+                    </div>
+                    <span class="theme-label">Muted Legality</span>
+                </div>
+
             </div>
 
             <!-- Tone Down Colours toggle -->
@@ -5658,11 +5854,21 @@
             'green-teal': ['#22c55e','#1eb854','#1aab4a','#169e40','#129136','#0d9488','#14b8a6','#34d399','#4ade80','#6ee7b7']
         };
 
+        // Maps muted theme IDs to their base palette key
+        const mutedBaseMap = {
+            'muted-classic': 'default',
+            'muted-prismatic': 'purple-cyan',
+            'muted-legality': 'green-teal'
+        };
+
         // SVG stop-color hex values per theme (SVG attrs can't use CSS vars)
         const themeSVGColors = {
             'default': ['#f43f6e', '#3b82f6'],
             'purple-cyan': ['#a855f7', '#06b6d4'],
-            'green-teal': ['#22c55e', '#14b8a6']
+            'green-teal': ['#22c55e', '#14b8a6'],
+            'muted-classic': ['#f43f6e', '#3b82f6'],
+            'muted-prismatic': ['#a855f7', '#06b6d4'],
+            'muted-legality': ['#22c55e', '#14b8a6']
         };
 
         function desaturateHex(hex, amount) {
@@ -5678,15 +5884,19 @@
 
         function getChartColors() {
             const t = document.documentElement.getAttribute('data-theme') || 'default';
-            const colors = themeChartColors[t] || themeChartColors['default'];
-            if (toneDownActive) return colors.map(c => desaturateHex(c, 0.4));
+            const baseKey = mutedBaseMap[t] || t;
+            let colors = (themeChartColors[baseKey] || themeChartColors['default']).slice();
+            // Muted themes: desaturate base palette 65% toward grey
+            if (mutedBaseMap[t]) colors = colors.map(c => desaturateHex(c, 0.65));
+            // Tone-down mode: additional desaturation pass
+            if (toneDownActive) colors = colors.map(c => desaturateHex(c, 0.35));
             return colors;
         }
 
         // ===== THEME MANAGEMENT =====
         function applyTheme(theme) {
             document.documentElement.setAttribute('data-theme', theme);
-            localStorage.setItem('prismPayTheme', theme);
+            localStorage.setItem('pv_theme', theme);
 
             // Update SVG logo gradient stops
             const colors = themeSVGColors[theme] || themeSVGColors['default'];
@@ -5707,7 +5917,7 @@
         }
 
         function initTheme() {
-            const saved = localStorage.getItem('prismPayTheme') || 'default';
+            const saved = localStorage.getItem('pv_theme') || localStorage.getItem('prismPayTheme') || 'default';
             applyTheme(saved);
         }
 
